@@ -19,12 +19,15 @@
       p.pint
       p.matplotlib
       p.uncertainties
-      p.jedi-language-server
 
       # For the GTK4Agg matplotlib backend, see:
       # https://matplotlib.org/stable/users/explain/backends.html
       p.pycairo
       p.pygobject3
+
+      # For text editor
+      p.jedi-language-server
+      p.debugpy
     ];
     pythonEnv = pkgs.python3.withPackages(pyPkgs);
   in {
