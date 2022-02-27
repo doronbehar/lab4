@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\usepackage{tabularx}
+
+% NOTE: To put equations in their environment we need either `float` or
+% `caption`.  We use float to put equations and other environments exactly
+% where they appear in the code with the `H` placeholder, and for that we
+% redefine the `equ` environment sort of twice, so this is a bit flaky but
+% it works.
+\usepackage{caption}
+\DeclareCaptionType{equ}[][]
+\captionsetup[equ]{name=נוסחא}
+\usepackage{float}
+\floatstyle{plain}
+% https://www.overleaf.com/learn/latex/Positioning_of_Figures
+\newfloat{equ}{H}{eq}[section]
+\floatname{equ}{נוסחא}
+
+\DeclareCaptionType{graph}[][]
+\captionsetup[graph]{name=גרף }
+
+% to includegraphics
+\usepackage{graphicx}
+
+% to fix itemize lists:
+% https://tex.stackexchange.com/a/53453/125609
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{colorlinks = true,
+	citecolor = gray,
+	linkcolor = red,
+	citecolor = green,
+	filecolor = magenta,
+	urlcolor = cyan
+}
+
+% Language
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\usepackage{hebrewcal}
+
+% Fonts
+\setmainfont{David CLM}
+\setsansfont{Libertinus Serif}
+\setmonofont{FreeMono}
+\newfontfamily\hebrewfont{David CLM}[Script=Hebrew]
+\newfontfamily\hebrewfontsf{Libertinus Serif}[Script=Hebrew]
+\newfontfamily\hebrewfonttt{FreeMono}[Script=Hebrew]
+
+\title{
+מיקרוסקופ כח אטומי - AFM
+}
+\author{
+שרה לחצר ודורון בכר \\
+הפקולטה לפיזיקה, הטכניון - מכון טכנולוגי לישראל.
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\end{document}
