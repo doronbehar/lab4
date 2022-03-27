@@ -19,6 +19,7 @@
       p.pint
       p.matplotlib
       p.uncertainties
+      p.scipy
 
       # For the QtAgg matplotlib backend, see:
       # https://matplotlib.org/stable/users/explain/backends.html
