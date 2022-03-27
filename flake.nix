@@ -30,18 +30,38 @@
       p.debugpy
     ];
     pythonEnv = pkgs.python3.withPackages(pyPkgs);
+    # Meant for compiling latex text in matplotlib. Using Latex text in plots
+    # requires the obscure latex package type1ec, see:
+    # https://github.com/matplotlib/matplotlib/issues/16911
+    texlive = pkgs.texlive.combine {
+      inherit (pkgs.texlive)
+        scheme-basic
+        cm-super
+        type1cm
+        underscore
+        dvipng
+        xetex
+        fontspec
+      ;
+    };
   in {
     devShell.x86_64-linux = pkgs.mkShell {
       nativeBuildInputs = [
         pythonEnv
+        texlive
+        # For latex language server
         pkgs.texlab
+        # For compiling our reports
         pkgs.tectonic
       ];
       MPLBACKEND = "QtAgg";
       QT_PLUGIN_PATH = "${pkgs.qt5.qtbase.bin}/${pkgs.qt5.qtbase.qtPluginPrefix}:${pkgs.qt5.qtwayland.bin}/${pkgs.qt5.qtbase.qtPluginPrefix}";
     };
     packages.x86_64-linux = {
-      inherit pythonEnv;
+      inherit
+        texlive
+        pythonEnv
+      ;
     };
   };
 }
