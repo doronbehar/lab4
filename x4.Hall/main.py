@@ -49,9 +49,11 @@ plt.errorbar(
 def func(I, R):
     return I*R
 
+# TODO: Use the sigma argument with the errors of the data somehow, see
+# https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit
+pars, pcov = curve_fit(func, I_raw, U_raw)
 # calculate error of fit, based upon:
 # https://kitchingroup.cheme.cmu.edu/blog/2013/02/12/Nonlinear-curve-fitting-with-parameter-confidence-intervals/
-pars, pcov = curve_fit(func, I_raw, U_raw)
 alpha = 0.05 # 95% confidence interval = 100*(1-alpha)
 n = len(U_raw)    # number of data points
 p = len(pars) # number of parameters
