@@ -60,6 +60,8 @@ dof = max(0, n - p) # number of degrees of freedom
 tval = distributions.t.ppf(1.0-alpha/2., dof) 
 # Only 1 value in this covariance matrix
 R_0 = (ureg.volt/ureg.mA * ufloat(pars[0], umath.sqrt(pcov[0][0])*tval)).to('ohm')
+# TODO: Calculate r-square and p-value of fit, use:
+# https://stackoverflow.com/questions/19189362/getting-the-r-squared-value-using-curve-fit/37899817#37899817
 
 label=r'fit: $R_0 = {:L}\Omega$'.format(
    R_0.magnitude
