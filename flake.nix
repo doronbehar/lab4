@@ -32,8 +32,9 @@
     ];
     pythonEnv = pkgs.python3.withPackages(pyPkgs);
     # Meant for compiling latex text in matplotlib. Using Latex text in plots
-    # requires the obscure latex package type1ec, see:
-    # https://github.com/matplotlib/matplotlib/issues/16911
+    # requires the obscure latex package type1ec, see issues:
+    # - https://github.com/matplotlib/matplotlib/issues/16911
+    # - https://github.com/matplotlib/matplotlib/issues/22715#issuecomment-1080459200
     texlive = pkgs.texlive.combine {
       inherit (pkgs.texlive)
         scheme-basic
