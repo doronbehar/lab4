@@ -900,7 +900,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.313889in,y=3.993477in,left,base]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont fit: \(\displaystyle R_0 = 40.2 \pm 1.9\Omega\)}%
+\pgftext[x=1.313889in,y=3.993477in,left,base]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont fit: \(\displaystyle R_0 = 40.2 \pm 1.6\Omega\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
