@@ -21,9 +21,10 @@
       p.uncertainties
       p.scipy
 
-      # For the QtAgg matplotlib backend, see:
+      # For the GTK4Agg matplotlib backend, see:
       # https://matplotlib.org/stable/users/explain/backends.html
-      p.pyqt5
+      p.pycairo
+      p.pygobject3
 
       # For text editor
       p.jedi-language-server
@@ -54,8 +55,8 @@
         # For compiling our reports
         pkgs.tectonic
       ];
-      MPLBACKEND = "QtAgg";
-      QT_PLUGIN_PATH = "${pkgs.qt5.qtbase.bin}/${pkgs.qt5.qtbase.qtPluginPrefix}:${pkgs.qt5.qtwayland.bin}/${pkgs.qt5.qtbase.qtPluginPrefix}";
+      MPLBACKEND = "GTK4Agg";
+      GTK_THEME = "Adwaita";
     };
     packages.x86_64-linux = {
       inherit
