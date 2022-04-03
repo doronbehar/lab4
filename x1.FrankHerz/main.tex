@@ -47,6 +47,7 @@
 \usepackage[version=4]{mhchem}
 
 % To include plots by matplotlib
+\usepackage{pgf}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 % Note we use resizebox as explained here through out the document https://tex.stackexchange.com/a/582956/125609
@@ -121,8 +122,6 @@ $2$
 	\label{fig:system-scheme-excitations}
 \end{figure}
 
-
-
 \section{תוצאות ודיון}
 בחלקו הראשון של הניסוי מטרתנו הייתה לבחון את רמות האנרגיה הדיסקרטיות של אטום הכספית בעזרת המערכת של החלק הראשון המתוארת במבוא.
 קיבענו את הטמפרטורה ל
@@ -131,7 +130,12 @@ $170 \deg C$,
 חזרנו על הניסוי שלוש פעמים, ובכל פעם קיבלנו מקסימות של זרמים בהפרשים קבועים של המתח.
 להלן מוצגת אחת מהמדידות שביצענו:
 
-\section{סיכום}
+\begin{figure}[H]
+	\begin{center}
+	\resizebox{\textwidth}{!}{\input{regular_2.pgf}}
+	\end{center}
+\end{figure}
+
 
 % \section{מקורות}
 
