@@ -173,18 +173,23 @@ $I_a$
 $V_a$
 באופן שיטטתי. הגרף לו אנו מצפים לקבל מהמערכת המוצגת באיור
 \ref{fig:system-scheme-excitations}
-מוצג באיור
-\ref{fig:theoretical-graph}.
+מוצג בגרף
+\ref{graph:theoretical}.
 
-\begin{figure}
+\begin{graph}
     \centering
-    \includegraphics{./theoretical-graph.png}
+    \includegraphics[width=\textwidth]{./theoretical-graph.png}
     \caption{
-    גרף תיאורטי של מדידת אנרגית היינון באמצעות המערכת באיור
+    תוצאות מדידה תיאורטיות של אנרגית היינון באמצעות המערכת באיור
     \ref{fig:system-scheme-excitations}
     }
-    \label{fig:theoretical-graph}
-\end{figure}
+    \label{graph:theoretical}
+\end{graph}
+
+ספק הזרם לחימום הקתודה המחובר הנקודה
+$H$
+נועד לשלוט על מתח המגע של המערכת, ראה
+
 
 מתחי ה-
 $V_a$
@@ -199,15 +204,15 @@ $1.5 [V]$
 ומדדנו את השינוי בזרם ההאצה כתלות במתח ההאצה.
 חזרנו על הניסוי שלוש פעמים, ובכל פעם קיבלנו מקסימות של זרמים בהפרשים קבועים של המתח.
 אחת המדידות שביצענו מוצגת באיור
-\ref{fig:first_mesurment}.
+\ref{graph:first_mesurment}.
  
-\begin{figure}[H]
+\begin{graph}[H]
 	\begin{center}
 	\resizebox{\textwidth}{!}{\input{regular_2.pgf}}
 	\end{center}
 	\caption{תוצאות הניסוי פרנק הרץ}
-	\label{fig:first_mesurment}
-\end{figure}
+\label{graph:first_mesurment}
+\end{graph}
 
 השגיאה במתח נקבעה בהתאם לרזולוציית המדידה - 
 $0.1 [V]$
@@ -229,7 +234,7 @@ $V_a = (0.58 \pm 0.01)[V]$.
 	\resizebox{\textwidth}{!}{\input{changingVr.pgf}}
 	\end{center}
 	\caption{תוצאות הניסוי פרנק הרץ}
-	\label{fig:first_mesurment}
+	\label{graph:first_mesurment}
 \end{figure}
 
 מכל אחת מהמדידות חילצנו את הערך ההממוצע של המרחק בין הפיקים, התקבל כי:
@@ -244,17 +249,43 @@ $V_r=4.5 $
 להלן שני גרפים המציגים את התוצאות:
 
 \begin{figure}[H]
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{\textwidth}
     	\centering
-    	\includegraphics[width=\textwidth]{changingTemp_0-10V.png}
-    	\caption{תוצאות הניסוי פרנק הרץ}
+    	\resizebox{\textwidth}{!}{\input{changingVr.pgf}}
+    	\caption{תוצאות הניסוי בטמפרטורות נמוכות}
     	\label{fig:Changing_temp_0-10v}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{changingVr.pgf}}
+    	\caption{תוצאות הניסוי בטמפרטורות גבוהות}
+    	\label{fig:Changing_temp_0-30v}
+    \end{subfigure}
+\end{figure}
+
+הפרשי המתח בין הפיקים עבור טמפרטורה 161
+4.95
+0.15000000000000058
+
+הפרשי המתח בין הפיקים עבור טמפרטורה 169
+4.875
+0.1299038105676647
+
+
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{changingTemp_0-10V.png}
+    	\caption{תוצאות הניסוי בטמפרטורות נמוכות}
+    	\label{fig:Changing_temp_0-10v}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{\textwidth}
     	\centering
     	\includegraphics[width=\textwidth]{changingTemp_0-30V.png}
-    	\caption{תוצאות הניסוי פרנק הרץ}
+    	\caption{תוצאות הניסוי בטמפרטורות גבוהות}
     	\label{fig:Changing_temp_0-30v}
     \end{subfigure}
 \end{figure}
