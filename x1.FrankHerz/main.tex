@@ -15,6 +15,8 @@
 % redefine the `equ` environment sort of twice, so this is a bit flaky but
 % it works.
 \usepackage{caption}
+\usepackage{subcaption}
+
 \DeclareCaptionType{equ}[][]
 \captionsetup[equ]{name=נוסחא}
 \usepackage{float}
@@ -186,7 +188,7 @@ $V_a$
 
 מתחי ה-
 $V_a$
-בהם מתקבלים נקודות מינימום מקומיות 
+בהם מתקבלים נקודות מינימום מקומיות הם המתחים בהם 
 
 \section{תוצאות ודיון}
 בחלקו הראשון של הניסוי מטרתנו הייתה לבחון את רמות האנרגיה הדיסקרטיות של אטום הכספית בעזרת המערכת של החלק הראשון המתוארת במבוא.
@@ -244,14 +246,14 @@ $V_r=4.5 $
 \begin{figure}[H]
     \begin{subfigure}[b]{0.3\textwidth}
     	\centering
-    	\resizebox{\textwidth}{!}{\input{changingTemp_0-10V.pgf}}
+    	\includegraphics[width=\textwidth]{changingTemp_0-10V.png}
     	\caption{תוצאות הניסוי פרנק הרץ}
     	\label{fig:Changing_temp_0-10v}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
     	\centering
-    	\resizebox{\textwidth}{!}{\input{changingTemp_0-30V.pgf}}
+    	\includegraphics[width=\textwidth]{changingTemp_0-30V.png}
     	\caption{תוצאות הניסוי פרנק הרץ}
     	\label{fig:Changing_temp_0-30v}
     \end{subfigure}
