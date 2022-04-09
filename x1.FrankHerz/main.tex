@@ -144,26 +144,49 @@ $V_a \ge  V_r$,
 $2$
 מאנרגית העירור הראשונה, אנו מצפים שהאלקטרונים יעוררו שני אטומי כספית ונצפה בזרם נמוך גם כן - כי התנגשות של אלקטרון שכזה באטום כספית יעורר אותו ואחר כך לאלקטרון תישאר אנרגיה לעורר אטום כספית נוסף. 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{./system-scheme-excitations.png}
 	\caption{
-	שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית עירור
+	שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית עירור.
 	}
 	\label{fig:system-scheme-excitations}
 \end{figure}
 
-בנוסף לאנרגית העירור, ניתן גם למדוד את אנרגית היינון של כספית תוך שינוי קטן למערכת, ראה איור
+בנוסף לאנרגית העירור, ניתן גם למדוד את אנרגית היינון של כספית תוך שינוי קטן בחיבורי המערכת, ראה איור
 \ref{fig:system-scheme-ionization}.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{./system-scheme-ionization.png}
     \caption{
-    שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית יינון
+    שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית יינון.
     }
     \label{fig:system-scheme-ionization}
 \end{figure}
+
+השתמשנו במערכת שמודדת את הזרם
+$I_a$
+עבור רצף של ערכי
+$V_a$
+באופן שיטטתי. הגרף לו אנו מצפים לקבל מהמערכת המוצגת באיור
+\ref{fig:system-scheme-excitations}
+מוצג באיור
+\ref{fig:theoretical-graph}.
+
+\begin{figure}
+    \centering
+    \includegraphics{./theoretical-graph.png}
+    \caption{
+    גרף תיאורטי של מדידת אנרגית היינון באמצעות המערכת באיור
+    \ref{fig:system-scheme-excitations}
+    }
+    \label{fig:theoretical-graph}
+\end{figure}
+
+מתחי ה-
+$V_a$
+בהם מתקבלים נקודות מינימום מקומיות 
 
 \section{תוצאות ודיון}
 בחלקו הראשון של הניסוי מטרתנו הייתה לבחון את רמות האנרגיה הדיסקרטיות של אטום הכספית בעזרת המערכת של החלק הראשון המתוארת במבוא.
@@ -173,7 +196,8 @@ $170 ^{\circ} C$,
 $1.5 [V]$
 ומדדנו את השינוי בזרם ההאצה כתלות במתח ההאצה.
 חזרנו על הניסוי שלוש פעמים, ובכל פעם קיבלנו מקסימות של זרמים בהפרשים קבועים של המתח.
-להלן מוצגת אחת מהמדידות שביצענו:
+אחת המדידות שביצענו מוצגת באיור
+\ref{fig:first_mesurment}.
  
 \begin{figure}[H]
 	\begin{center}
@@ -196,7 +220,7 @@ $V_a = (0.58 \pm 0.01)[V]$.
 
 
 לאחר מכן בדקנו את השפעת מתח העצירה על היחס בין זרם ההאצה למתח ההאצה.
-על כן, ביצענו את אותן המדידות בהתאם למערכת פרנק הרץ המתוארת במבוא, עבור מתחי העצירה משתנים.
+על כן, חזרנו על הניסוי עבור מתחי העצירה משתנים, להלן התוצאות.
 
 \begin{figure}[H]
 	\begin{center}
@@ -213,6 +237,25 @@ $V_r=2.5 \delta V =4.85 \pm 0.08$
 $V_r=3.5 \delta V =4.93 \pm 0.04$
 $V_r=4.5 $
 
+
+במהלך הניסוי ביצענו מספר מדידות של זרם ההאצה כתלות במתח ההאצה עבור טמפרטורות שונות.
+להלן שני גרפים המציגים את התוצאות:
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.3\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{changingTemp_0-10V.pgf}}
+    	\caption{תוצאות הניסוי פרנק הרץ}
+    	\label{fig:Changing_temp_0-10v}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{changingTemp_0-30V.pgf}}
+    	\caption{תוצאות הניסוי פרנק הרץ}
+    	\label{fig:Changing_temp_0-30v}
+    \end{subfigure}
+\end{figure}
 % TODO: Explain that the velocity of the electrons is 4 orders of magnitude higher then the velocity of the mercury atoms (in 170 Celsius temperature), hence the effects of temperature should be negligible.
 
 % \section{מקורות}
