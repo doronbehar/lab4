@@ -203,19 +203,17 @@ $V_a$
 מתאר באופן סכמתי את תוצאות המדידה להן ציפינו מהמערכת המתוארת באיור
 \ref{fig:system-scheme-excitations}.
 
-%\begin{graph}
-%    \centering
-%	\adjincludegraphics[
-%	width=0.9\textwidth,
-%	trim={{.1\width} {.15\height} {.1\width} %{.1\height}}
-%	,clip
-%   ]{./theoretical-graph.png}
-%    \caption{
-%    תוצאות מדידה תיאורטיות של אנרגית היינון %באמצעות המערכת באיור
-%    \ref{fig:system-scheme-excitations}
-%    }
-%    \label{graph:theoretical}
-%\end{graph}
+\begin{graph}
+    \centering
+	\adjincludegraphics[
+	width=0.9\textwidth,trim={{.1\width} {.15\height} {.1\width} {.1\height}},clip
+   ]{./theoretical-graph.png}
+    \caption{
+    תוצאות מדידה תיאורטיות של אנרגית היינון %באמצעות המערכת באיור
+    \ref{fig:system-scheme-excitations}
+    }
+    \label{graph:theoretical}
+\end{graph}
 
 לפי נוסחא
 \ref{equ:eV_a},
@@ -243,18 +241,18 @@ $V_a$.
 $V_a$
 המתאים לאנרגיה הקינטית שמייננת את אטומי הכספית, בהתאם לפונקצית העבודה שקבענו בקתודה.
 
-%\begin{figure}
-%    \centering
-%	\adjincludegraphics[
-%	width=0.9\textwidth,
-%	trim={{.03\width} {.15\height} {.05\width} %{.1\height}}
-%	,clip
-%    ]{./system-scheme-ionization.png}
-%    \caption{
-%    שרטוט סכמתי של מערכת הניסוי - עבור מדידת %אנרגית יינון.
-%    }
-%    \label{fig:system-scheme-ionization}
-%\end{figure}
+\begin{figure}
+    \centering
+	\adjincludegraphics[
+	width=0.9\textwidth,
+	trim={{.03\width} {.15\height} {.05\width} {.1\height}}
+	,clip
+    ]{./system-scheme-ionization.png}
+    \caption{
+    שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית יינון.
+    }
+    \label{fig:system-scheme-ionization}
+\end{figure}
 
 \clearpage
 
@@ -303,7 +301,7 @@ $$ \phi_A - \phi_K = V_a - E_{kin}/e = V_a - \Delta V = (0.94 \pm 0.05) [V]$$
 %	\begin{center}
 %	\resizebox{\textwidth}{!}{\input{changingVr.pgf%}}
 %	\end{center}
-%	\caption{תוצאות הניסוי פרנק הרץ}
+%	\caption{תוצאות הניסוי עבור מתחי עצירה משתנים}
 %	\label{graph:changing_Vr}
 %\end{graph}
 
@@ -324,22 +322,22 @@ $$ \phi_A - \phi_K = V_a - E_{kin}/e = V_a - \Delta V = (0.94 \pm 0.05) [V]$$
 \ref{graph:Changing_temp_0-30v}
 .
 
-%\begin{graph}[H]
-%    \begin{subfigure}[b]{\textwidth}
-%    	\centering
-%    	\resizebox{0.95\textwidth}{!}{\input{changi%ngTemp_0-10V.pgf}}
-%    	\caption{תוצאות הניסוי בטמפרטורות נמוכות}
-%    	\label{graph:Changing_temp_0-10v}
-%    \end{subfigure}
-%    \hfill
-%    \begin{subfigure}[b]{\textwidth}
-%    	\centering
-%    	\resizebox{0.95\textwidth}{!}{\input{changi%ngTemp_0-30V.pgf}}
-%    	\caption{תוצאות הניסוי בטמפרטורות גבוהות}
-%    	\label{graph:Changing_temp_0-30v}
-%    \end{subfigure}
-%    \label{graph:Changing_temp}
-%\end{graph}
+\begin{graph}[H]
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{0.95\textwidth}{!}{\input{changingTemp_0-10V.pgf}}
+    	\caption{תוצאות הניסוי בטמפרטורות נמוכות}
+    	\label{graph:Changing_temp_0-10v}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{0.95\textwidth}{!}{\input{changingTemp_0-30V.pgf}}
+    	\caption{תוצאות הניסוי בטמפרטורות גבוהות}
+    	\label{graph:Changing_temp_0-30v}
+    \end{subfigure}
+    \label{graph:Changing_temp}
+\end{graph}
 
 כפי שנראה בגרף 
 \label{graph:Changing_temp_0-10v}
@@ -364,14 +362,16 @@ $$ \phi_A - \phi_K = V_a - E_{kin}/e = V_a - \Delta V = (0.94 \pm 0.05) [V]$$
     \begin{subfigure}[b]{\textwidth}
     	\centering
     	%\resizebox{0.95\textwidth}{!}{\input{heaterCurrentChange_0.pgf}}
-    	\caption{תוצאות הניסוי 1}
+    	\caption{תוצאות הניסוי עבור 
+    	$I_H =0.28,0.25 mA$}
     	\label{fig:Changing_Ih_25-28mA}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{\textwidth}
     	\centering
-    	%\resizebox{0.95\textwidth}{!}{\input{heaterCurrentChange_1.pgf}}
-    	\caption{תוצאות הניסוי 2}
+    	\resizebox{0.95\textwidth}{!}{\input{heaterCurrentChange_1.pgf}}
+    	\caption{תוצאות הניסוי עבור 
+    	$I_H =0.28,0.23 mA$}
     	\label{fig:Changing_Ih_23-28mA}
     \end{subfigure}
 \end{figure}
@@ -456,7 +456,7 @@ $I_H = 280 mA$
 
 % TODO: להוסיף הסבר
 
-% TODO: change graphs title
+
 \section{מקורות}
 
 \printbibliography[heading=none]
