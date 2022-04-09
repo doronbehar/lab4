@@ -52,6 +52,18 @@
 \pgfplotsset{compat=newest}
 % Note we use resizebox as explained here through out the document https://tex.stackexchange.com/a/582956/125609
 
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ top=30mm,
+ left = 25mm,
+ right = 25mm,
+ bottom=30mm,
+ headheight=2cm,
+ headsep=2cm,
+ footskip=1.5cm
+}
+
 % Language
 \usepackage{polyglossia}
 \setdefaultlanguage{hebrew}
@@ -87,22 +99,39 @@
 לפי מודל אטום המימן, אלקטרונים באטום המימן מצויים ברמות אנרגיה בדידות. גם אטום
 עם יותר אלקטרונים כגון אטום הכספית \ce{Hg}, אפשר למדל באופן דומה ולהראות
 ניסיונית שגם לו רמות אנרגיה בדידות. רוב הניסויים שמראים זאת משתמשים בפוטונים
-שנבלעים באטומים ומוסרים את האנרגיה שלהם ($h \ni$) תמורת עירור. אין הכרח
+שנבלעים באטומים ומוסרים את האנרגיה שלהם
+($h \nu $)
+תמורת עירור. אין הכרח
 שהאנרגיה המעוררת תגיע מפוטון, אלא גם אלקטרון עם אנרגיה קינטית מתאימה אמור להיות
 מסוגל לעורר אטומים בהתנגשות. באופן דומה, ניתן גם ליינן אטומים בהתנגשות ולא רק
 לעורר אותם.
+
+% TODO: decide whether I agree with this sentence
+נעיר כי בניסוי שלנו, המהירויות האופייניות של אטומי הכספית, (לפי התבלגות מקסוול בולצמן) בטמפרטורות בהן עבדנו, היו נמוכות בהשוואה למהירויות של האלקטרונים, לכן ניתן להזניח את אפקט דופלר בגלל התנועה 
 
 % TODO: Add explanations for our expectation out of the theory?
 
 \section{מערכת הניסוי}
 
-שרטוט סכמתי של המערכת ניתן לראות באיור \ref{fig:system-scheme-excitations}.
+שרטוט סכמתי של המערכת ניתן לראות באיור
+\ref{fig:system-scheme-excitations}.
 בכדי למדוד את אנרגיות היינון ואת אנרגיות העירור של אטומי כספית באמצעות התנגשות
-עם אלקטרונים, השתמשנו במערכת בשדה חשמלי בין הקתודה והאנודה המסומנים באותיות $K$
-ו-$A$. אלקטרונים אלו מואצים בתוך תא בו נמצאת הכספית, בפאזה גזית. בנוסף לאנודה
-ולקתודה, השתמשנו באלקטרודה ($M$), כך שבינה לבין האנודה יש פוטנציאל כזה שדוחה את
-האלקטרונים בהתאם למתח $V_r$. אם לא היתה כספית בתוך התא, אלא ואקום, היינו מצפים
-שהאלקטרונים המואצים היו מגיעים לאלקטרודה $M$, במידה ו-$V_a \ge  V_r$, ונמדוד
+עם אלקטרונים, השתמשנו במערכת בשדה חשמלי בין הקתודה והאנודה המסומנים באותיות
+$K$
+ו-
+$A$.
+אלקטרונים אלו מואצים בתוך תא בו נמצאת הכספית, בפאזה גזית. בנוסף לאנודה
+ולקתודה, השתמשנו באלקטרודה 
+($M$),
+כך שבינה לבין האנודה יש פוטנציאל כזה שדוחה את
+האלקטרונים בהתאם למתח
+$V_r$.
+אם לא היתה כספית בתוך התא, אלא ואקום, היינו מצפים
+שהאלקטרונים המואצים היו מגיעים לאלקטרודה
+$M$,
+במידה ו-
+$V_a \ge  V_r$,
+ונמדוד
 זרם שלילי במד הזרם הרגיש המסומן ב.
 \circled{pA}.
 
@@ -117,12 +146,24 @@ $2$
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./system-scheme-excitations.png}
-	\caption{שרטוט סכמתי של מערכת הניסוי - עבור עירורים}
+	\includegraphics[width=0.9\textwidth]{./system-scheme-excitations.png}
+	\caption{
+	שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית עירור
+	}
 	\label{fig:system-scheme-excitations}
 \end{figure}
 
-גם כאשר האנרגיה שאנחנו
+בנוסף לאנרגית העירור, ניתן גם למדוד את אנרגית היינון של כספית תוך שינוי קטן למערכת, ראה איור
+\ref{fig:system-scheme-ionization}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./system-scheme-ionization.png}
+    \caption{
+    שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית יינון
+    }
+    \label{fig:system-scheme-ionization}
+\end{figure}
 
 \section{תוצאות ודיון}
 בחלקו הראשון של הניסוי מטרתנו הייתה לבחון את רמות האנרגיה הדיסקרטיות של אטום הכספית בעזרת המערכת של החלק הראשון המתוארת במבוא.
@@ -150,8 +191,8 @@ $0.03 [pA]$.
 
 מתוך שלושת המדידות חילצנו את ההפרש במתח בין הפיקים, הערך הממוצע שהתקבל הוא:
 $(4.86 \pm 0.05)[V]$,
-והפיק הראשון שנמדד הוא 
-$(0.58 \pm 0.01)[V]$.
+והפיק הראשון שנמדד התקבל ב- 
+$V_a = (0.58 \pm 0.01)[V]$.
 
 
 לאחר מכן בדקנו את השפעת מתח העצירה על היחס בין זרם ההאצה למתח ההאצה.
@@ -159,13 +200,20 @@ $(0.58 \pm 0.01)[V]$.
 
 \begin{figure}[H]
 	\begin{center}
-	\resizebox{\textwidth}{!}{\input{regular_2.pgf}}
+	\resizebox{\textwidth}{!}{\input{changingVr.pgf}}
 	\end{center}
 	\caption{תוצאות הניסוי פרנק הרץ}
 	\label{fig:first_mesurment}
 \end{figure}
 
-% TODO: Explain that the velocity of the electrons is 4 orders of magnitude higher then the velocity of the mercury atoms (in 170 Celsius temperature), hence the effects of temperature should be neglectible.
+מכל אחת מהמדידות חילצנו את הערך ההממוצע של המרחק בין הפיקים, התקבל כי:
+%TODO: add data to the list and add info about 4.5
+$V_r=0.5 \delta V =4.82 \pm 0.08$
+$V_r=2.5 \delta V =4.85 \pm 0.08$
+$V_r=3.5 \delta V =4.93 \pm 0.04$
+$V_r=4.5 $
+
+% TODO: Explain that the velocity of the electrons is 4 orders of magnitude higher then the velocity of the mercury atoms (in 170 Celsius temperature), hence the effects of temperature should be negligible.
 
 % \section{מקורות}
 
