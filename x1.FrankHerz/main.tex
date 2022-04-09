@@ -36,6 +36,9 @@
 \usepackage{enumitem}
 \setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
 
+% To crop inserted images: https://tex.stackexchange.com/questions/57418/crop-an-inserted-image
+\usepackage[export]{adjustbox}
+
 % Links
 \usepackage{hyperref}
 \hypersetup{colorlinks = true,
@@ -72,13 +75,25 @@
 \setotherlanguage{english}
 \usepackage{hebrewcal}
 
+\usepackage[
+backend=biber,
+isbn=false,
+style=numeric,
+doi = false,
+sorting=ynt
+]{biblatex}
+% Seems to be a recommended package but it makes quotes in bibliography at the
+% end appear with a question mark instead of `"`.
+%\usepackage{csquotes}
+\addbibresource{references.bib} % Imports bibliography file
+
 % Fonts
 \setmainfont{David CLM}
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+\setsansfont{Libertinus Serif}
+\setmonofont{FreeMono}
 \newfontfamily\hebrewfont{David CLM}[Script=Hebrew]
-\newfontfamily\hebrewfontsf{Liberation Serif}[Script=Hebrew]
-\newfontfamily\hebrewfonttt{Liberation Mono}[Script=Hebrew]
+\newfontfamily\hebrewfontsf{Libertinus Serif}[Script=Hebrew]
+\newfontfamily\hebrewfonttt{FreeMono}[Script=Hebrew]
 
 \title{
 אישור קיומן של רמות אנרגיה בדידות ומדידת אנרגיית היינון של אטום כספית
@@ -115,7 +130,7 @@
 
 \section{מערכת הניסוי}
 
-שרטוט סכמתי של המערכת ניתן לראות באיור
+שרטוט סכמתי של המערכת מצורף באיור
 \ref{fig:system-scheme-excitations}.
 בכדי למדוד את אנרגיות היינון ואת אנרגיות העירור של אטומי כספית באמצעות התנגשות
 עם אלקטרונים, השתמשנו במערכת בשדה חשמלי בין הקתודה והאנודה המסומנים באותיות
@@ -146,39 +161,53 @@ $V_a \ge  V_r$,
 $2$
 מאנרגית העירור הראשונה, אנו מצפים שהאלקטרונים יעוררו שני אטומי כספית ונצפה בזרם נמוך גם כן - כי התנגשות של אלקטרון שכזה באטום כספית יעורר אותו ואחר כך לאלקטרון תישאר אנרגיה לעורר אטום כספית נוסף. 
 
+האנרגיה הקינטית של האלקטרונים תלויה גם בפונקציות העבודה של האנודה והקתודה, לפי נוסחא
+\ref{equ:eV_a}.\cite{Manual}
+
+\begin{equ}
+$$ e V_a = E_{kin} + e \left ( \phi_A - \phi_k \right )$$
+\caption{
+הקשר בין מתח ההאצה
+$V_a$
+לאנרגיה הקינטית של האלקטרונים ופונקציות העבודה של האנודה והקתודה.
+}
+\label{equ:eV_a}
+\end{equ}
+
+ספק הזרם לחימום הקתודה המחובר לנקודה
+$H$
+נועד לשלוט על פונקצית העבודה של הקתודה -
+$\phi_k$.
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\textwidth]{./system-scheme-excitations.png}
+	\adjincludegraphics[
+	width=0.9\textwidth,
+	trim={{.03\width} {.15\height} {.05\width} {.1\height}}
+	,clip
+	]{./system-scheme-excitations.png}
 	\caption{
 	שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית עירור.
 	}
 	\label{fig:system-scheme-excitations}
 \end{figure}
 
-בנוסף לאנרגית העירור, ניתן גם למדוד את אנרגית היינון של כספית תוך שינוי קטן בחיבורי המערכת, ראה איור
-\ref{fig:system-scheme-ionization}.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\textwidth]{./system-scheme-ionization.png}
-    \caption{
-    שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית יינון.
-    }
-    \label{fig:system-scheme-ionization}
-\end{figure}
-
 השתמשנו במערכת שמודדת את הזרם
 $I_a$
 עבור רצף של ערכי
 $V_a$
-באופן שיטטתי. הגרף לו אנו מצפים לקבל מהמערכת המוצגת באיור
-\ref{fig:system-scheme-excitations}
-מוצג בגרף
-\ref{graph:theoretical}.
+באופן שיטטתי. גרף
+\ref{graph:theoretical}
+מתאר באופן סכמתי את תוצאות המדידה להן ציפינו מהמערכת המתוארת באיור
+\ref{fig:system-scheme-excitations}.
 
 \begin{graph}
     \centering
-    \includegraphics[width=\textwidth]{./theoretical-graph.png}
+	\adjincludegraphics[
+	width=0.9\textwidth,
+	trim={{.1\width} {.15\height} {.1\width} {.1\height}}
+	,clip
+    ]{./theoretical-graph.png}
     \caption{
     תוצאות מדידה תיאורטיות של אנרגית היינון באמצעות המערכת באיור
     \ref{fig:system-scheme-excitations}
@@ -186,24 +215,57 @@ $V_a$
     \label{graph:theoretical}
 \end{graph}
 
-ספק הזרם לחימום הקתודה המחובר הנקודה
-$H$
-נועד לשלוט על מתח המגע של המערכת,
-
-
-מתחי ה-
+לפי נוסחא
+\ref{equ:eV_a},
+וכתלות בפונקציות העבודה שקבענו בכל מדידה, מתחי ה-
 $V_a$
-בהם מתקבלים נקודות מינימום מקומיות הם המתחים בהם 
+בהם מתקבלים נקודות מינימום מקומיות ב-
+$I_a$,
+הם המתחים שמתאימים לאנרגיות הקינטיות שמצליחות לעורר את האטומים. כי הירידה בזרם מצביעה על כך שהאלקטרונים איבדו אנרגיה קינטית לטובת עירור אטומי הכספית.
+
+בנוסף לאנרגית העירור, ניתן גם למדוד את אנרגית היינון של כספית באמצעות חיבור מעט שונה של מתח העצירה
+$V_r$
+כמתואר באיור
+\ref{fig:system-scheme-ionization}.
+חיבור זה גורם לכך שרק כאשר האנרגיה הקינטית של האלקטרונים גבוהה מספיק בשביל יינון,
+נקבל זרם בסימן הפוך ב-
+\circled{pA}
+בגלל יוני כספית חיוביים שמגיעים לאלקטרודה
+$M$.
+
+את מדידה זו ביצענו באופן דומה למדידות אנרגית העירור, באמצעות מדידה של הזרם ב-
+$I_a$
+עבור רצף של ערכי
+$V_a$.
+הגרף לו נצפה במדידה זו הינו של עלייה חדה ופתאומית ב-
+$V_a$
+המתאים לאנרגיה הקינטית שמייננת את אטומי הכספית, בהתאם לפונקצית העבודה שקבענו בקתודה.
+
+\begin{figure}
+    \centering
+	\adjincludegraphics[
+	width=0.9\textwidth,
+	trim={{.03\width} {.15\height} {.05\width} {.1\height}}
+	,clip
+    ]{./system-scheme-ionization.png}
+    \caption{
+    שרטוט סכמתי של מערכת הניסוי - עבור מדידת אנרגית יינון.
+    }
+    \label{fig:system-scheme-ionization}
+\end{figure}
+
+\clearpage
 
 \section{תוצאות ודיון}
-בחלקו הראשון של הניסוי מטרתנו הייתה לבחון את רמות האנרגיה הדיסקרטיות של אטום הכספית בעזרת המערכת של החלק הראשון המתוארת במבוא.
+בחלקו הראשון של הניסוי השתמשנו במערכת המוצגת באיור
+\ref{fig:system-scheme-excitations}.
 קיבענו את הטמפרטורה ל
-$170 ^{\circ} C$,
-ואת מתח ההאטה ל
+$170 ^{\circ} C$
+,את מתח ההאטה ל
 $1.5 [V]$
 ומדדנו את השינוי בזרם ההאצה כתלות במתח ההאצה.
 חזרנו על הניסוי שלוש פעמים, ובכל פעם קיבלנו מקסימות של זרמים בהפרשים קבועים של המתח.
-אחת המדידות שביצענו מוצגת באיור
+אחת המדידות שביצענו מוצגת בגרף
 \ref{graph:first_mesurment}.
  
 \begin{graph}[H]
@@ -216,81 +278,114 @@ $1.5 [V]$
 
 השגיאה במתח נקבעה בהתאם לרזולוציית המדידה - 
 $0.1 [V]$
-והשגיאה בזרם הוערכה לפי המדידות בכ- 
+והשגיאה בזרם הוערכה בהתאם למדידות בכ- 
 $0.03 [pA]$.
 
 
+
 מתוך שלושת המדידות חילצנו את ההפרש במתח בין הפיקים, הערך הממוצע שהתקבל הוא:
-$(4.86 \pm 0.05)[V]$,
+$\Delta V = (4.86 \pm 0.05)[V]$,
 והפיק הראשון שנמדד התקבל ב- 
 $V_a = (0.58 \pm 0.01)[V]$.
 
 
 לאחר מכן בדקנו את השפעת מתח העצירה על היחס בין זרם ההאצה למתח ההאצה.
-על כן, חזרנו על הניסוי עבור מתחי העצירה משתנים, להלן התוצאות.
+על כן, חזרנו על הניסוי עבור מתחי העצירה משתנים, התוצאות המוצגות בגרף
+\ref{graph:changing_Vr}.
 
-\begin{figure}[H]
+\begin{graph}[H]
 	\begin{center}
 	\resizebox{\textwidth}{!}{\input{changingVr.pgf}}
 	\end{center}
 	\caption{תוצאות הניסוי פרנק הרץ}
-	\label{graph:first_mesurment}
-\end{figure}
+	\label{graph:changing_Vr}
+\end{graph}
 
 מכל אחת מהמדידות חילצנו את הערך ההממוצע של המרחק בין הפיקים, התקבל כי:
-%TODO: add data to the list and add info about 4.5
-$V_r=0.5 \delta V =4.82 \pm 0.08$
-$V_r=2.5 \delta V =4.85 \pm 0.08$
-$V_r=3.5 \delta V =4.93 \pm 0.04$
-$V_r=4.5 $
-
+\begin{itemize}
+    \item $V_r=0.5: \Delta V =4.82 \pm 0.08$
+    \item $V_r=2.5: \Delta V =4.85 \pm 0.08$
+    \item $V_r=3.5: \Delta V =4.93 \pm 0.04$
+    \item $V_r=4.5:$ לא התקבלו פיקים
+\end{itemize}
 
 במהלך הניסוי ביצענו מספר מדידות של זרם ההאצה כתלות במתח ההאצה עבור טמפרטורות שונות.
-להלן שני גרפים המציגים את התוצאות:
+התוצאות מוצגות בגרפים
+\ref{fig:Changing_temp_0-10v}
+ו-
+\ref{fig:Changing_temp_0-30v}
+.
 
-\begin{figure}[H]
+\begin{graph}[H]
     \begin{subfigure}[b]{\textwidth}
     	\centering
-    	\resizebox{\textwidth}{!}{\input{heaterCurrentChange_0.pgf}}
-    	\caption{תוצאות הניסוי 1}
-    	\label{fig:Changing_Ih_25-28ma}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{\textwidth}
-    	\centering
-    	\resizebox{\textwidth}{!}{\input{heaterCurrentChange_1.pgf}}
-    	\caption{תוצאות הניסוי 2}
-    	\label{fig:Changing_temp_0-30v}
-    \end{subfigure}
-\end{figure}
-
-הפרשי המתח בין הפיקים עבור טמפרטורה 161
-4.95
-0.15000000000000058
-
-הפרשי המתח בין הפיקים עבור טמפרטורה 169
-4.875
-0.1299038105676647
-
-
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{changingTemp_0-10V.png}
+    	\resizebox{\textwidth}{!}{\input{changingTemp_0-10V.pgf}}
     	\caption{תוצאות הניסוי בטמפרטורות נמוכות}
     	\label{fig:Changing_temp_0-10v}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{\textwidth}
     	\centering
-    	\includegraphics[width=\textwidth]{changingTemp_0-30V.png}
+    	\resizebox{\textwidth}{!}{\input{changingTemp_0-30V.pgf}}
     	\caption{תוצאות הניסוי בטמפרטורות גבוהות}
     	\label{fig:Changing_temp_0-30v}
     \end{subfigure}
-\end{figure}
-% TODO: Explain that the velocity of the electrons is 4 orders of magnitude higher then the velocity of the mercury atoms (in 170 Celsius temperature), hence the effects of temperature should be negligible.
+    \label{fig:Changing_temp}
+\end{graph}
 
+כפי שנראה בגרף 
+\label{fig:Changing_temp_0-10v}
+בטמפרטורות נמוכות הזרם עולה בקצב מהיר כתלות במתח. 
+וכי המערכת הפסיקה את המדידות בתחמים מתח נמוכים יחסית.
+
+המדידות המוצגות בגרף
+\label{fig:Changing_temp_0-30v}
+מראות איכותית שיש התאמה בפיקים שמתקבלים בשתי הטמפרטורות, בכדי לבחון את ההתאמה כמותית חישבנו את ערך הממוצע של הפרשי הפיקים:
+\begin{itemize}
+    \item $T = 161.6 \pm 0.7 ^{\circ}:\Delta V = 4.9 \pm 0.1  [V]$ 
+    \item $T = 169.5 \pm 0.7 ^{\circ}:\Delta V = 4.8 \pm 0.1  [V]$ 
+\end{itemize}
+
+לבסוף בחנו את השפעת הזרם הפועל על סליל החימום שמחובר לקתודה על התלות בין מתח ההאצה לבין זרם ההאצה.
+התוצאות מוצגות בגרפים,
+\ref{fig:Changing_Ih_25-28mA}
+ו-
+\ref{fig:Changing_Ih_23-28mA}.
+\begin{figure}[H]
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{heaterCurrentChange_0.pgf}}
+    	\caption{תוצאות הניסוי 1}
+    	\label{fig:Changing_Ih_25-28mA}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{heaterCurrentChange_1.pgf}}
+    	\caption{תוצאות הניסוי 2}
+    	\label{fig:Changing_Ih_23-28mA}
+    \end{subfigure}
+\end{figure}
+
+% TODO: להוסיף הסבר
+
+בחלקו השני של הניסוי הרכבנו את המערכת המוצגות באיור
+\ref{fig:system-scheme-excitations}, 
+במטרה למצוא את אנרגיית היינון של אטום הכספית.
+לשם הנוחות סרטטנו גרף של מתח האצה כתלות בזרם ההאצה כאשר המרנו את זרם ההאצה לסקלה לוגריתמית.
+התוצאות מוצגות ב
+\ref{}
+
+
+\begin{graph}[H]
+	\begin{center}
+	\resizebox{\textwidth}{!}{\input{changingVr.pgf}}
+	\end{center}
+	\caption{תוצאות הניסוי פרנק הרץ}
+	\label{graph:changing_Vr}
+\end{graph}
+% TODO: Explain that the velocity of the electrons is 4 orders of magnitude higher then the velocity of the mercury atoms (in 170 Celsius temperature), hence the effects of temperature should be negligible.
+% TODO: change graphs title
 % \section{מקורות}
 
 % \printbibliography[heading=none]
