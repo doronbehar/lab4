@@ -1,0 +1,151 @@
+\documentclass{article}
+
+\usepackage{tabularx}
+
+% https://tex.stackexchange.com/a/129100/125609, to draw the pico ampremeter
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+% NOTE: To put equations in their environment we need either `float` or
+% `caption`.  We use float to put equations and other environments exactly
+% where they appear in the code with the `H` placeholder, and for that we
+% redefine the `equ` environment sort of twice, so this is a bit flaky but
+% it works.
+\usepackage{caption}
+\usepackage{subcaption}
+
+\DeclareCaptionType{equ}[][]
+\captionsetup[equ]{name=נוסחא}
+\usepackage{float}
+\floatstyle{plain}
+% https://www.overleaf.com/learn/latex/Positioning_of_Figures
+\newfloat{equ}{H}{eq}[section]
+\floatname{equ}{נוסחא}
+
+\DeclareCaptionType{graph}[][]
+\captionsetup[graph]{name=גרף }
+
+% to includegraphics
+\usepackage{graphicx}
+
+% to fix itemize lists:
+% https://tex.stackexchange.com/a/53453/125609
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+
+% To crop inserted images: https://tex.stackexchange.com/questions/57418/crop-an-inserted-image
+\usepackage[export]{adjustbox}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{colorlinks = true,
+	citecolor = gray,
+	linkcolor = red,
+	citecolor = green,
+	filecolor = magenta,
+	urlcolor = cyan
+}
+
+\usepackage[version=4]{mhchem}
+
+% To include plots by matplotlib
+\usepackage{pgf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+% Note we use resizebox as explained here through out the document https://tex.stackexchange.com/a/582956/125609
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ top=30mm,
+ left = 25mm,
+ right = 25mm,
+ bottom=30mm,
+ headheight=2cm,
+ headsep=2cm,
+ footskip=1.5cm
+}
+
+% Language
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\usepackage{hebrewcal}
+
+\usepackage[
+backend=biber,
+isbn=false,
+style=numeric,
+doi = false,
+sorting=ynt
+]{biblatex}
+% Seems to be a recommended package but it makes quotes in bibliography at the
+% end appear with a question mark instead of `"`.
+%\usepackage{csquotes}
+\addbibresource{references.bib} % Imports bibliography file
+
+% Fonts
+\setmainfont{David CLM}
+\setsansfont{Libertinus Serif}
+\setmonofont{FreeMono}
+\newfontfamily\hebrewfont{David CLM}[Script=Hebrew]
+\newfontfamily\hebrewfontsf{Libertinus Serif}[Script=Hebrew]
+\newfontfamily\hebrewfonttt{FreeMono}[Script=Hebrew]
+
+\title{
+
+} 
+\author{
+שרה לחצר ודורון בכר \\
+הפקולטה לפיזיקה, טכניון - מכון טכנולוגי לישראל.
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+
+
+\end{abstract}
+
+\section{מבוא}
+בניסוי זה השתמשנו בשיטת סחריר האלקטרון, שיטה בה חוקרים תכונות של חומרים בעלי אלקטרונים לא מזווגים.
+בתהודת סחריר האלקטרון 
+\textenglish{ESR},
+נמדדת בליעת אנרגיה של אלקטרונים בנוכחות שדה מגנטי חיצוני. השדה המגנטי גורם לאלקטרונים להתייצב במקביל ובאנטי מקביל ביחס אליו, כתלות במומנטים המגנטיים של האלקטרונים וליצור מצבי אנרגיה חדשים.
+מתוך אפקט זימן נוכל לקבוע כי הפרשי האנרגיות נתונים בנוסחא
+\label{equ:U_gap}.
+
+\begin{equ}
+$$ \Delta U = g \mu _B H$$
+\caption{
+פער אנרגטי בין רמות האנרגיה שנוצרו משדה מגנטי חיצוני-
+$H$,
+המגנטון של בוהר-
+$\mu _B$,
+וקבוע הפיצול
+$g$.
+}
+
+פילוג האלקטרונים בשתי רמות האנרגיה יהיה בהתאם להתפלגות בולצמן, כך שהרמה האנרגטית הנמוכה תהיה מאוכלסת יותר מהרמה האנרגית הגבוהה .
+
+% TODO: read about stimulated emission and explain why there is an equal probability for transitions, maybe explain with fermi golden rule why most of the transitions will be from - to +.
+לפיכך, בהכנסת פוטונים בעלי אנרגיה התואמת את נוסחא 
+\label{equ:U_gap}
+, יעברו יותר אלקטרונים מהרמה התחתונה לעליונה מאשר להיפך, כך שתבלע אנרגיה במערכת.
+\label{equ:U_gap}
+\end{equ}
+
+
+\section{מערכת הניסוי}
+
+
+בניגוד למקובל בספקטרוסקופיה בה משנים את אספקת האנרגיה לדגם, בניסוי זה שינינו את השדה המגנטי החיצוני וכך גם את רמות האנרגיה.
+
+
+\end{document}
