@@ -6,7 +6,10 @@ ureg.setup_matplotlib(True)
 from uncertainties import ufloat, umath
 import pandas as pd
 from scipy.signal import find_peaks
+# To fit the modulation's sin
 from scipy.optimize import curve_fit
+# To calculate errors in fit parameters
+from scipy.stats import distributions
 
 R = (ufloat(0.33,0.05*0.33) + ufloat(0.47,0.1*0.47))*ureg.ohm
 
@@ -71,20 +74,43 @@ def plotAndFit(df):
     )
     sin_fit_points = sin_fit(df['t'].values, *popt)
 
-    # TODO: Calculate std using pcov
-    I_0_fit = popt[3]
-    I_amp = popt[2]
+    # calculate error of fit, based upon:
+    # https://kitchingroup.cheme.cmu.edu/blog/2013/02/12/Nonlinear-curve-fitting-with-parameter-confidence-intervals/
+    alpha = 0.05 # 95% confidence interval = 100*(1-alpha)
+    n = len(df)    # number of data points
+    p = len(popt) # number of parameters
+    dof = max(0, n - p) # number of degrees of freedom
+    # student-t value for the dof and confidence level
+    tval = distributions.t.ppf(1.0-alpha/2., dof) 
+    popt_err = np.sqrt(np.diag(pcov))*tval
+    I_0_fit = ufloat(popt[3], popt_err[3])*ureg.ampere
+    I_amp = ufloat(popt[1],popt_err[1])*ureg.ampere
+    # Calculate r-square and p-value of fit, based upon:
+    # https://stackoverflow.com/questions/19189362/getting-the-r-squared-value-using-curve-fit/37899817#37899817
+    residuals = I_modulation_raw - sin_fit(df['t'].values, *popt)
+    ss_res = np.sum(residuals**2)
+    ss_tot = np.sum((I_modulation_raw-np.mean(I_modulation_raw))**2)
+    r_squared = 1 - (ss_res / ss_tot)
+    with open("{}.rsquare.tex".format(df.attrs['fname']), 'w') as ftex:
+        ftex.write(r'$R^2 = {:.2f}$'.format(r_squared))
+    with open("{}.k.tex".format(df.attrs['fname']), 'w') as ftex:
+        if df.attrs['zoom_type'] == 'periodicity':
+            ftex.write(f'$k = {H0/I_0_fit:L}$')
+        elif df.attrs['zoom_type'] == 'maximas':
+            ftex.write(f'$k = {H0/I_amp:L}$')
+        else:
+            print("Didn't write any k in a tex file")
+
     ax.hlines(
-        I_0_fit*ureg.volt,
+        I_0_fit.m.n,
         df['t'].min(), df['t'].max(),
         colors='black',
         linestyles='dotted'
     )
-    I_m_fit = popt[1]
 
     # Put the absorption near the modulation signal, normalized, with amplitude
-    # slightly larger then I_m_fit
-    absorption = (I_m_fit + 0.1)*df['2']/df['2'].max() + I_0_fit
+    # slightly larger then I_amp
+    absorption = (I_amp.m.n + 0.1)*df['2']/df['2'].max() + I_0_fit.m.n
     plt.plot(
         df['t'].values*ureg.s,
         # Plotting without units, as they are irrelevant
@@ -132,7 +158,7 @@ def plotAndFit(df):
             label="fit"
         )
         axins.hlines(
-            I_0_fit,
+            I_0_fit.m.n,
             df['t'].min(), df['t'].max(),
             colors='black',
             linestyles='dotted'
@@ -158,11 +184,15 @@ def plotAndFit(df):
 
 I_DC_fit = plotAndFit(dfdc)
 I_EG_fit = plotAndFit(dfeg)
-
-# TODO: Compare I_DC_fit with error from pcov to this hand made measurement
+# Hand made measurement
 I_DC_manual_measure = ufloat(0.5148, 0.0001) * ureg.A
+with open("dc-measurement-manual.k.tex", 'w') as ftex:
+    ftex.write(f'$k = {H0/I_DC_manual_measure:L}$')
 
-# TODO: Compare the Vpp of ./part1Mes 0.csv
-
+# Write a for loop
 # TODO: Compute k of bio savare via selonoid's geometry and compare that with
-# H0/I_0 and H0/I_DC , Use the propagated errors
+# - H0/I_DC_manual_measure 
+# - H0/I_DC_fit
+# - H0/I_EG_fit
+#
+# Use the propagated errors
