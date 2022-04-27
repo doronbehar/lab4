@@ -1580,12 +1580,12 @@
 \pgfsetrectcap%
 \pgfsetroundjoin%
 \pgfsetlinewidth{1.505625pt}%
-\definecolor{currentstroke}{rgb}{0.882353,0.756863,0.149020}%
+\definecolor{currentstroke}{rgb}{0.121569,0.466667,0.705882}%
 \pgfsetstrokecolor{currentstroke}%
 \pgfsetdash{}{0pt}%
-\pgfpathmoveto{\pgfqpoint{1.038000in}{2.571958in}}%
-\pgfpathlineto{\pgfqpoint{1.848087in}{1.996400in}}%
-\pgfpathlineto{\pgfqpoint{1.848087in}{1.996400in}}%
+\pgfpathmoveto{\pgfqpoint{1.041325in}{2.755600in}}%
+\pgfpathlineto{\pgfqpoint{2.050000in}{2.004282in}}%
+\pgfpathlineto{\pgfqpoint{2.050000in}{2.004282in}}%
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%

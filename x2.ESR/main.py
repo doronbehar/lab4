@@ -149,8 +149,7 @@ def plotAndFit(df):
         # Plotting Modulation signal without errors, to not clutter the plot
         axins.plot(
             df['t']*ureg.s,
-            I_modulation_raw,
-            color='#e1c126',
+            sin_fit_points,
             label="fit"
         )
         axins.hlines(
