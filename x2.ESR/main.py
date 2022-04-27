@@ -95,9 +95,9 @@ def plotAndFit(df):
         ftex.write(r'$R^2 = {:.2f}$'.format(r_squared))
     with open("{}.k.tex".format(df.attrs['fname']), 'w') as ftex:
         if df.attrs['zoom_type'] == 'periodicity':
-            ftex.write(f'$k = {H0/I_0_fit:L}$')
+            ftex.write(f'$k = {np.abs(H0/I_0_fit):L}$')
         elif df.attrs['zoom_type'] == 'maximas':
-            ftex.write(f'$k = {H0/I_amp:L}$')
+            ftex.write(f'$k = {np.abs(H0/I_amp):L}$')
         else:
             print("Didn't write any k in a tex file")
 
