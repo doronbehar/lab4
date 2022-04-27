@@ -93,13 +93,6 @@ def plotAndFit(df):
     r_squared = 1 - (ss_res / ss_tot)
     with open("{}.rsquare.tex".format(df.attrs['fname']), 'w') as ftex:
         ftex.write(r'$R^2 = {:.2f}$'.format(r_squared))
-    with open("{}.k.tex".format(df.attrs['fname']), 'w') as ftex:
-        if df.attrs['zoom_type'] == 'periodicity':
-            ftex.write(f'$k = {np.abs(H0/I_0_fit):L}$')
-        elif df.attrs['zoom_type'] == 'maximas':
-            ftex.write(f'$k = {np.abs(H0/I_amp):L}$')
-        else:
-            print("Didn't write any k in a tex file")
 
     ax.hlines(
         I_0_fit.m.n,
@@ -186,11 +179,8 @@ I_DC_fit = plotAndFit(dfdc)
 I_EG_fit = plotAndFit(dfeg)
 # Hand made measurement
 I_DC_manual_measure = ufloat(0.5148, 0.0001) * ureg.A
-with open("dc-measurement-manual.k.tex", 'w') as ftex:
-    ftex.write(f'$k = {H0/I_DC_manual_measure:L}$')
 
-# Write a for loop
-# TODO: Compute k of bio savare via selonoid's geometry and compare that with
+# k values are:
 # - H0/I_DC_manual_measure 
 # - H0/I_DC_fit
 # - H0/I_EG_fit
