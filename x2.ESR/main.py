@@ -172,9 +172,9 @@ def plotAndFit(df):
         )
         ax.indicate_inset_zoom(axins, edgecolor="black")
 
+    plt.legend()
     fig.savefig("{}.png".format(df.attrs['fname']))
     fig.savefig("{}.pgf".format(df.attrs['fname']))
-    plt.legend()
     plt.show()
 
     if df.attrs['zoom_type'] == 'periodicity':
