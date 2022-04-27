@@ -11,6 +11,8 @@ from scipy.optimize import curve_fit
 # To calculate errors in fit parameters
 from scipy.stats import distributions
 
+plt.rcParams['text.usetex'] = True
+
 R = (ufloat(0.33,0.05*0.33) + ufloat(0.47,0.1*0.47))*ureg.ohm
 
 oscillator_feedback_knob = ufloat(30,1)
@@ -98,6 +100,7 @@ def plotAndFit(df):
         I_0_fit.m.n,
         df['t'].min(), df['t'].max(),
         colors='black',
+        label="$I_0$",
         linestyles='dotted'
     )
 
