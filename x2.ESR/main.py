@@ -50,8 +50,8 @@ dfeg.attrs = {
 def plotAndFit(df):
     fig, ax = plt.subplots()
     I_modulation = (df['1'].values*ureg.volt/R).to('ampere')
-    I_modulation_err = np.array([val.magnitude.std_dev for val in I_modulation])
-    I_modulation_raw = np.array([val.magnitude.nominal_value for val in I_modulation])
+    I_modulation_err = np.array([val.m.s for val in I_modulation])
+    I_modulation_raw = np.array([val.m.n for val in I_modulation])
     plt.errorbar(
         df['t'].values*ureg.s,
         I_modulation_raw,
