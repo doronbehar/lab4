@@ -49,7 +49,7 @@ dfeg.attrs = {
     'fname': 'energy-gap-measurement'
 }
 
-def plotAndFit(df):
+def plotAndFit(df, show=True):
     fig, ax = plt.subplots()
     I_modulation = (df['1'].values*ureg.volt/R).to('ampere')
     I_modulation_err = np.array([val.m.s for val in I_modulation])
@@ -182,15 +182,16 @@ def plotAndFit(df):
     #  fig.tight_layout()
     fig.savefig("{}.png".format(df.attrs['fname']))
     fig.savefig("{}.pgf".format(df.attrs['fname']))
-    plt.show()
+    if show:
+        plt.show()
 
     if df.attrs['zoom_type'] == 'periodicity':
         return I_0_fit
     elif df.attrs['zoom_type'] == 'maximas':
         return I_amp
 
-I_DC_fit = plotAndFit(dfdc)
-I_EG_fit = plotAndFit(dfeg)
+I_DC_fit = plotAndFit(dfdc, False)
+I_EG_fit = plotAndFit(dfeg, False)
 # Hand made measurement
 I_DC_manual_measure = ufloat(0.5148, 0.0001) * ureg.A
 
