@@ -54,14 +54,16 @@ def plotAndFit(df):
     I_modulation = (df['1'].values*ureg.volt/R).to('ampere')
     I_modulation_err = np.array([val.m.s for val in I_modulation])
     I_modulation_raw = np.array([val.m.n for val in I_modulation])
-    plt.errorbar(
+    ax.errorbar(
         df['t'].values*ureg.s,
-        I_modulation_raw,
+        I_modulation_raw*ureg.ampere,
         # TODO: Explain in report that error is not shown, but it was considered
         # during curve_fit
         #yerr=I_modulation_err,
+        color='blue',
         label='Modulation'
     )
+    ax.tick_params(axis='y', color='blue', labelcolor='blue')
     # Perform fit to I(t) to get I_0
     def sin_fit(t, freq, a, phase, offset):
         return a*np.sin(2*np.pi*freq*t + phase) + offset
@@ -97,33 +99,36 @@ def plotAndFit(df):
         ftex.write(r'$R^2 = {:.2f}$'.format(r_squared))
 
     ax.hlines(
-        I_0_fit.m.n,
-        df['t'].min(), df['t'].max(),
+        I_0_fit.m.n*ureg.ampere,
+        df['t'].min()*ureg.s, df['t'].max()*ureg.s,
         colors='black',
         label="$I_0$",
         linestyles='dotted'
     )
 
-    # Put the absorption near the modulation signal, normalized, with amplitude
-    # slightly larger then I_amp
-    absorption = (I_amp.m.n + 0.1)*df['2']/df['2'].max() + I_0_fit.m.n
-    plt.plot(
+    # Put the absorption in a different scale
+    absorption = df['2']
+    absorption_color = '#e1c126'
+    axt = ax.twinx()
+    axt.tick_params(axis='y', colors=absorption_color)
+    axt.plot(
         df['t'].values*ureg.s,
         # Plotting without units, as they are irrelevant
-        absorption,
-        color='#e1c126',
+        absorption.values*ureg.volt,
+        color=absorption_color,
         label='Absorption'
     )
     peaks, _ = find_peaks(df['2'], height=1)
-    ax.plot(
+    axt.plot(
         df['t'].iloc[peaks].values*ureg.s,
         absorption.iloc[peaks].values,
-        'x', label="Peaks"
+        'x', color='green', label="Peaks"
     )
-    ax.vlines(
+    # TODO: Figure out how to choose the limits of these lines
+    axt.vlines(
         df['t'].iloc[peaks].values*ureg.s,
-        sin_fit(df['t'].iloc[peaks], *popt),
-        absorption.iloc[peaks].values,
+        absorption.min(),
+        absorption.max(),
         colors='#ee10a7',
         linestyles='dashdot'
     )
@@ -146,7 +151,8 @@ def plotAndFit(df):
         axins.set_yticks([])
         axins.set_xlim(x1, x2)
         axins.set_ylim(y1, y2)
-        # Plotting Modulation signal without errors, to not clutter the plot
+        # Plotting Modulation signal without errors, and without units, to not
+        # clutter the plot
         axins.plot(
             df['t']*ureg.s,
             sin_fit_points,
@@ -167,7 +173,13 @@ def plotAndFit(df):
         )
         ax.indicate_inset_zoom(axins, edgecolor="black")
 
-    plt.legend()
+    if df.attrs['zoom_type'] == 'periodicity':
+        axt.legend(loc='lower left')
+        ax.legend(loc='upper left')
+    elif df.attrs['zoom_type'] == 'maximas':
+        axt.legend()
+        ax.legend()
+    #  fig.tight_layout()
     fig.savefig("{}.png".format(df.attrs['fname']))
     fig.savefig("{}.pgf".format(df.attrs['fname']))
     plt.show()
