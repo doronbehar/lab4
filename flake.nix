@@ -15,7 +15,7 @@
     pyPkgs = p: [
       p.numpy
       p.pint
-      p.pint-pandas
+      p.pandas
       p.matplotlib
       p.uncertainties
       p.scipy
