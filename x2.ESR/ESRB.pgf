@@ -20,9 +20,9 @@
 %%
 %% Matplotlib used the following preamble
 %%   \usepackage{fontspec}
-%%   \setmainfont{DejaVuSerif.ttf}[Path=\detokenize{/nix/store/pzyssb3mfyaisyvpajrr24nhvkm8sk74-python3.9-matplotlib-3.5.1/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/}]
-%%   \setsansfont{DejaVuSans.ttf}[Path=\detokenize{/nix/store/pzyssb3mfyaisyvpajrr24nhvkm8sk74-python3.9-matplotlib-3.5.1/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/}]
-%%   \setmonofont{DejaVuSansMono.ttf}[Path=\detokenize{/nix/store/pzyssb3mfyaisyvpajrr24nhvkm8sk74-python3.9-matplotlib-3.5.1/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/}]
+%%   \setmainfont{DejaVuSerif.ttf}[Path=\detokenize{/nix/store/rx4dbw7r1gdvxkapfl58k135m3aa2mgw-python3.9-matplotlib-3.5.1/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/}]
+%%   \setsansfont{DejaVuSans.ttf}[Path=\detokenize{/nix/store/rx4dbw7r1gdvxkapfl58k135m3aa2mgw-python3.9-matplotlib-3.5.1/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/}]
+%%   \setmonofont{DejaVuSansMono.ttf}[Path=\detokenize{/nix/store/rx4dbw7r1gdvxkapfl58k135m3aa2mgw-python3.9-matplotlib-3.5.1/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/}]
 %%
 \begingroup%
 \makeatletter%
@@ -1373,7 +1373,7 @@
 \definecolor{textcolor}{rgb}{0.000000,0.000000,0.000000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.494331in,y=3.995622in,,bottom]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle f_0\)}%
+\pgftext[x=3.494331in,y=3.995622in,,bottom]{\color{textcolor}\sffamily\fontsize{10.000000}{12.000000}\selectfont \(\displaystyle f_{rf}\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfpathrectangle{\pgfqpoint{0.800000in}{0.487300in}}{\pgfqpoint{4.960000in}{3.411100in}}%

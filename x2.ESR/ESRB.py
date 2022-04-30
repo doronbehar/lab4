@@ -15,15 +15,15 @@ amp = 700*ureg.mV
 R=ufloat(0.82, 0.82*0.1)*ureg.ohm
 
 df = pd.read_csv("./ESRB.csv")
-# The I_modulation signal is horrible, the system was too noisy, so instead:
+# The I0_modulation signal is horrible, the system was too noisy, so instead:
 #
-#  I_modulation = (unumpy.uarray(
+#  I0_modulation = (unumpy.uarray(
     #  df['V_modulation_raw'].values,
     #  df['V_modulation_err'].values
 #  )*ureg.mV/R).to('ampere')
 #
 # we regnerate it, assuming it should be linear, just as V_DC is.
-I_modulation = (unumpy.uarray(np.linspace(
+I0_modulation = (unumpy.uarray(np.linspace(
     df['V_modulation_raw'].min(),
     df['V_modulation_raw'].max(),
     len(df)
@@ -36,14 +36,14 @@ ptp_Y = unumpy.uarray(
 ptp_X_modulation = ufloat(3.09, 0.01)*ureg.mV
 
 fig, ax = plt.subplots()
-I_modulation_err = np.array([val.m.s for val in I_modulation])
-I_modulation_raw = np.array([val.m.n for val in I_modulation])
+I0_modulation_err = np.array([val.m.s for val in I0_modulation])
+I0_modulation_raw = np.array([val.m.n for val in I0_modulation])
 ptp_ratio = ptp_Y/ptp_X_modulation
 absorption_deriviative = ptp_ratio/max(ptp_ratio)
 absorption_deriviative_raw = np.array([val.m.n for val in absorption_deriviative])
 absorption_deriviative_err = np.array([val.m.s for val in absorption_deriviative])
 ax.errorbar(
-    I_modulation_raw*ureg.ampere,
+    I0_modulation_raw*ureg.ampere,
     absorption_deriviative_raw, # Dimensionless
     fmt='.',
     yerr=absorption_deriviative_err,
@@ -69,72 +69,72 @@ def lorentzian_fit(I, I0, gamma, amplitude):
 matlab_p0    = [0.5479, 0.03847, 0.05554]
 matlab_bounds=((0.547,  0.03672,  0.05304),
                (0.5488, 0.04021,   0.05805))
-I0 = ufloat(matlab_p0[0], abs(matlab_bounds[0][0] - matlab_p0[0]))*ureg.ampere
+I_rf = ufloat(matlab_p0[0], abs(matlab_bounds[0][0] - matlab_p0[0]))*ureg.ampere
 I_hwhm = ufloat(matlab_p0[1], abs(matlab_bounds[0][1] - matlab_p0[1]))*ureg.ampere
 
 from main import g_times_bohr
 # TODO: Take this value from Itamar & Tomer
 H_RF = ufloat(34.914, 0.009)*ureg.gauss
-k = H_RF/I0
+k = H_RF/I_rf
 # Converts current I To frequency f using all of the constants
 def I2f(I):
     return (I*k*g_times_bohr/ureg.planck_constant).to('megahertz')
 
-f_modulation = I2f(I_modulation)
-f0 = I2f(I0)
+f0_modulation = I2f(I0_modulation)
+f_rf = I2f(I_rf)
 f_hwhm = I2f(I_hwhm)
 T2 = (1/f_hwhm).to('nanosecond')
 
 ##### A failing Python fit attempt - I consider it as a failure because it hits
 ##### the bounds :/
 #  popt, pcov = curve_fit(
-    #  lorentzian_dif_fit, absorption_deriviative_raw, I_modulation_raw,
+    #  lorentzian_dif_fit, absorption_deriviative_raw, I0_modulation_raw,
     #  p0=matlab_p0, bounds=matlab_bounds
 #  )
-#  lorentzian_dif_fit_points = lorentzian_dif_fit(I_modulation_raw, *popt)
+#  lorentzian_dif_fit_points = lorentzian_dif_fit(I0_modulation_raw, *popt)
 #  ax.plot(
-    #  I_modulation_raw*ureg.ampere,
+    #  I0_modulation_raw*ureg.ampere,
     #  lorentzian_dif_fit_points,
     #  label="Python fit"
 #  )
 
-I_modulation_seq = np.linspace(
-    I_modulation.min().m.n,
-    I_modulation.max().m.n,
-    len(I_modulation)*100
+I0_modulation_seq = np.linspace(
+    I0_modulation.min().m.n,
+    I0_modulation.max().m.n,
+    len(I0_modulation)*100
 )
 ax.plot(
-    I_modulation_seq*ureg.ampere,
-    lorentzian_dif_fit(I_modulation_seq, I0.m.n, I_hwhm.m.n, matlab_p0[2]),
+    I0_modulation_seq*ureg.ampere,
+    lorentzian_dif_fit(I0_modulation_seq, I_rf.m.n, I_hwhm.m.n, matlab_p0[2]),
     label="Matlab fit"
 )
 ax.set_yticks([])
 axt = ax.twiny()
 axt.grid(linestyle='--')
 axt.set_yticks([])
-f_modulation_seq = np.linspace(
-    f_modulation.min().m.n,
-    f_modulation.max().m.n,
-    len(f_modulation)*100
+f0_modulation_seq = np.linspace(
+    f0_modulation.min().m.n,
+    f0_modulation.max().m.n,
+    len(f0_modulation)*100
 )
-def lorentzian_wrapper(f):
+def lorentzian_wrapper(f0):
     # From some reason this need to be amplified by a factor of 800 so it will
     # look good.
-    return lorentzian_fit(f, f0.m.n, f_hwhm.m.n, matlab_p0[2]*800)
+    return lorentzian_fit(f0, f_rf.m.n, f_hwhm.m.n, matlab_p0[2]*800)
 axt.plot(
-    f_modulation_seq*ureg.megahertz,
-    lorentzian_wrapper(f_modulation_seq),
+    f0_modulation_seq*ureg.megahertz,
+    lorentzian_wrapper(f0_modulation_seq),
     label = "Lorenzian fit", color='green'
 )
 axt.set_xticks(
-    [(f0 - f_hwhm).m.n, f0.m.n, (f0 + f_hwhm).m.n],
-    ['', '$f_0$', '']
+    [(f_rf - f_hwhm).m.n, f_rf.m.n, (f_rf + f_hwhm).m.n],
+    ['', '$f_{rf}$', '']
 )
 axt.set_xlabel('')
 axt.arrow(
     length_includes_head = True,
-    x = (f0 - f_hwhm).m.n*ureg.megahertz,
-    y = lorentzian_wrapper((f0 - f_hwhm).m.n),
+    x = (f_rf - f_hwhm).m.n*ureg.megahertz,
+    y = lorentzian_wrapper((f_rf - f_hwhm).m.n),
     dx = 2*f_hwhm.m.n*ureg.megahertz,
     dy = 0,
     head_length = f_hwhm.m.n/10,
@@ -143,8 +143,8 @@ axt.arrow(
 )
 axt.arrow(
     length_includes_head = True,
-    x = (f0 + f_hwhm).m.n*ureg.megahertz,
-    y = lorentzian_wrapper((f0 + f_hwhm).m.n),
+    x = (f_rf + f_hwhm).m.n*ureg.megahertz,
+    y = lorentzian_wrapper((f_rf + f_hwhm).m.n),
     dx = -2*f_hwhm.m.n*ureg.megahertz,
     head_length = f_hwhm.m.n/10,
     head_width = matlab_p0[2],
