@@ -1,0 +1,21 @@
+Description	
+Number of Runs	150
+Preset Time	10
+Pause Time	0
+Alarm Level	0
+High Voltage	1000
+Step Voltage	0
+Volume	0
+
+Run	High		Elapsed
+Number	Voltage	Counts	Time	Date/Time
+1	1000	618	10	04/28/22 04:37:06 PM	
+2	1000	623	10	04/28/22 04:37:16 PM	
+3	1000	596	10	04/28/22 04:37:26 PM	
+4	1000	607	10	04/28/22 04:37:37 PM	
+5	1000	596	10	04/28/22 04:37:47 PM	
+6	1000	628	10	04/28/22 04:37:57 PM	
+7	1000	656	10	04/28/22 04:38:07 PM	
+8	1000	621	10	04/28/22 04:38:17 PM	
+9	1000	581	10	04/28/22 04:38:28 PM	
+10	1000	581	10	04/28/22 04:38:38 PM	

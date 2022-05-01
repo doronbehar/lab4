@@ -1,0 +1,16 @@
+01. Top Shelf
+02. 2nd Shelf
+06. 2nd Shelf + 0.29cm
+07. 2nd Shelf + 0.25cm
+08. 2nd Shelf + 0.462cm
+09. 2nd Shelf + 0.51cm
+10. 2nd Shelf + 0.29 + 0.07cm
+11. 2nd Shelf + 0.29 + 0.012cm
+12. 2nd Shelf + 0.15 + 0.062cm
+13. 2nd Shelf + 0.216cm
+14. 2nd Shelf + 0.216 + 0.062cm
+15. 2nd Shelf + 1.15cm
+16. 2nd Shelf + 0.902cm
+19. 2nd Shelf + 0.608cm
+20. 2nd Shelf + 0.81cm
+21. 2nd Shelf + 0.708cm
