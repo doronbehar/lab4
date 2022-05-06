@@ -1,8 +1,0 @@
-measurements 1-4: Position from top shelf: #3
-5th measurement: Position from top shelf: #1
-Matter properties:
-- Sr-90
-- 0.1uCi 28.8 yrs
-- Nov 2014
-
-Chosen operating voltage: 1120[V]
