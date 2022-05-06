@@ -56,6 +56,16 @@
         pkgs.texlab
         # For compiling reports
         pkgs.tectonic
+        # https://github.com/tectonic-typesetting/tectonic/issues/893#issuecomment-1116651368
+        (pkgs.biber.overrideAttrs(old: {
+          version = "2.16";
+          src = pkgs.fetchFromGitHub {
+            owner = "plk";
+            repo = "biber";
+            rev = "v2.16";
+            sha256 = "sha256-vb/iWD/qwKik7lFPp6bmrIyl8aiMCbB2HWIKFzzCBhU=";
+          };
+        }))
       ];
       MPLBACKEND = "GTK4Agg";
       GTK_THEME = "Adwaita";
