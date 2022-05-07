@@ -79,7 +79,7 @@ df1 = pd.read_csv("./Ti-204_0.25uCi_3.78Yrs_Dec2019.tsv", skiprows=10, index_col
   #  Adjusted R-square: 0.97
   #  RMSE: 8.902
 df1.attrs = {
-    'matter': "Thallium-204_March 2020",
+    'matter': "Thallium-204_March2020",
     'popt_matlab': [161.1, -0.0585]
 }
 plotAndFit(df1)
@@ -93,7 +93,7 @@ df2 = pd.read_csv("./Sr-90_0.1uCi_28.8Yrs_Nov2014.tsv", skiprows=10, index_col=F
   #  Adjusted R-square: 0.9813
   #  RMSE: 14.06
 df2.attrs = {
-    'matter': "Strontium-90_Nov 2014",
+    'matter': "Strontium-90_Nov2014",
     'popt_matlab': [315.7, -0.09377],
 }
 plotAndFit(df2)
