@@ -216,7 +216,37 @@ $\mu$
 \section{
 תוצאות
 }
+\subsection{
+מציאת תחום ה-
+plateau
+}
+ביצענו סריקה של מתחי עבודה במונה גייגר עבור חומרים רדיואקטיביים שונים בכדי לזהות את תחום ה
+$plateau$.
+התוצאות מוצגות ב
+\ref{graph:plateau}.
 
+\begin{graph}[H]
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{0.95\textwidth}{!}{\input{plateau/plateau.png}}
+    	\caption{ סריקת המתחים במונה גייגר עבור הניסוי של שרה.}
+    
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{\textwidth}
+    	\centering
+    	\resizebox{0.95\textwidth}{!}{\input{plateau/plateau.png}}
+        \caption{סריקת המתחים במונה גייגר עבור הניסוי של דורון.}
+    	\label{graph:}
+    \end{subfigure}
+    \label{graph:plateau}
+\end{graph}
+
+בהתאם לתוצאות בחרנו לעבוד במתח 
+$1000v$
+ו-
+$1200v$,
+בהתאם לסדר הגרפים.
 \subsection{
 מדידת דעיכת בטא
 }
@@ -247,9 +277,17 @@ $Tl-204$
  למדידות ביצענו התאמה ,
  טיב ההתאמה הינו 
  $R^2 = 0.9892$,
- %TODO: chi-sq
- $\mu = 3.629$
- 
+ $\chi^2=$.
+ %TODO: chi-squared
+ מתוך המדידות חילצנו את מקדם הדעיכה
+ $\mu = (3.629 \pm 0.504) [\frac{cm^2}{g}]$.
+ על מנת למצוא את
+טווח החדירה הממוצע של קרני ה
+$\beta$
+ נמצא מתי העוצמה דועכת לחצי מהעוצמה ההתחלתית ונקבל את צפיפות טווח החדירה ההממוצע.
+  %TODO: calculate that
+
+
 
 \begin{graph}[ht!]
     \centering
@@ -260,6 +298,18 @@ $Tl-204$
     \label{graph:decay_Tl-204}
 \end{graph}
 
+ בדומה לגרף 
+ \ref{graph:decay_SR90},
+ מוצגות הפעימות חלקי זמן כתלות בצפיפות עובי החומר-אלומיניום.
+ למדידות ביצענו התאמה ,
+ טיב ההתאמה הינו 
+ $R^2 = 0.9901$,
+ $\chi^2=$.
+ %TODO: chi-squared
+ מתוך המדידות חילצנו את מקדם הדעיכה
+ $\mu = (3.38 \pm 0.49) [\frac{cm^2}{g}]$.
+חישבנו את צפיפות טווח החדירה ההממוצע.
+ %TODO: calculate that
 \subsection{
 מדידת דעיכת עוצמת קרינה כתלות במרחק
 }
@@ -272,7 +322,7 @@ $Tl-204$
 \ref{equ:distanceIntensity}:
 
 \begin{equ}
-$$ I(r) \sim \frac{1}{(r+a)^2}$$
+$$ I(r) \sim \frac{1}{(r+a)^2} + n$$
 \label{equ:distanceIntensity_fit}
 \end{equ}
 
@@ -285,6 +335,10 @@ $$ I(r) \sim \frac{1}{(r+a)^2}$$
 	\begin{center}
 	\resizebox{\textwidth}{!}{\input{./ISL/Strontium-90_Nov2014.pgf}}
 	\end{center}
+	\caption{
+	מדידות והתאמה ל-
+	$1/(r+a)^2 + n$, $R^2 \approx 0.996$
+	}
 	\label{graph:ISL_Sr-90}
 \end{graph}
 
@@ -292,6 +346,10 @@ $$ I(r) \sim \frac{1}{(r+a)^2}$$
 	\begin{center}
 	\resizebox{\textwidth}{!}{\input{./ISL/Thallium-204_March2020.pgf}}
 	\end{center}
+	\caption{
+	מדידות והתאמה ל-
+	$1/(r+a)^2 + n$, $R^2 \approx 1.000$
+	}
 	\label{graph:ISL_Tl-204}
 \end{graph}
 
