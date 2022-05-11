@@ -37,27 +37,36 @@ def plotAndFit(df):
 
     # Perform fit to I(t) to get I_0
     def isl_fit(r, m, a):
-        return m/(r+a) + noise.m.n
+        return m/(r+a)**2 + noise.m.n
     popt, pcov = curve_fit(
         isl_fit, df['Number'].values, counts1,
-        p0=df.attrs['popt_matlab'],
+        p0=df.attrs['p0'],
         # Use the standard deviation to determine a weight for each measurement
         sigma=counts1_err,
         # Weights are absolute, not relative
         absolute_sigma=True
     )
-    # TODO: Get Rsquare and all that jazz from pcov
     distances_seq = np.linspace(df['Number'].min(), df['Number'].max(), 100)
     plt.plot(
         distances_seq,
         isl_fit(distances_seq, *popt),
-        label=r'Python Fit $\sim \frac{1}{r+a} + n$'
+        label=r'Fit $\sim \frac{1}{(r+a)^2} + n$'
     )
-    plt.plot(
-        distances_seq,
-        isl_fit(distances_seq, *df.attrs['popt_matlab']),
-        label=r'Matlab Fit $\sim \frac{1}{r+a} + n$'
-    )
+    # calculate error of fit, based upon:
+    # https://kitchingroup.cheme.cmu.edu/blog/2013/02/12/Nonlinear-curve-fitting-with-parameter-confidence-intervals/
+    alpha = 0.05 # 95% confidence interval = 100*(1-alpha)
+    n = len(df) # number of data points
+    p = len(popt) # number of parameters
+    dof = max(0, n - p) # number of degrees of freedom
+    # student-t value for the dof and confidence level
+    tval = distributions.t.ppf(1.0-alpha/2., dof) 
+    popt_err = np.sqrt(np.diag(pcov))*tval
+    # Calculate r-square and p-value of fit, based upon:
+    # https://stackoverflow.com/questions/19189362/getting-the-r-squared-value-using-curve-fit/37899817#37899817
+    residuals = counts1 - isl_fit(df['Number'].values, *popt)
+    ss_res = np.sum(residuals**2)
+    ss_tot = np.sum((counts1-np.mean(counts1))**2)
+    r_squared = 1 - (ss_res / ss_tot)
 
     plt.xlabel('Relative Distance [cm]')
     plt.ylabel('Counts [Hz]')
@@ -66,32 +75,20 @@ def plotAndFit(df):
     plt.savefig("{}.png".format(df.attrs['matter']))
     plt.show()
 
+    return r_squared
+
 
 df1 = pd.read_csv("./Ti-204_0.25uCi_3.78Yrs_Dec2019.tsv", skiprows=10, index_col=False, sep="\t")
-#  Coefficients (with 95% confidence bounds):
-       #  a =     -0.0585  (-0.3468, 0.2298)
-       #  m =       161.6  (119.9, 203.3)
-#  Goodness of fit:
-  #  SSE: 634
-  #  R-square: 0.9733
-  #  Adjusted R-square: 0.97
-  #  RMSE: 8.902
 df1.attrs = {
     'matter': "Thallium-204_March2020",
-    'popt_matlab': [161.1, -0.0585]
+    # Got these from matlab originally ;/
+    'p0': [161.1, -0.0585]
 }
-plotAndFit(df1)
+r_squared1 = plotAndFit(df1)
 df2 = pd.read_csv("./Sr-90_0.1uCi_28.8Yrs_Nov2014.tsv", skiprows=10, index_col=False, sep="\t")
-#  Coefficients (with 95% confidence bounds):
-       #  a =    -0.09377  (-0.3116, 0.124)
-       #  m =       315.7  (251.4, 380.1)
-#  Goodness of fit:
-  #  SSE: 1582
-  #  R-square: 0.9834
-  #  Adjusted R-square: 0.9813
-  #  RMSE: 14.06
 df2.attrs = {
     'matter': "Strontium-90_Nov2014",
-    'popt_matlab': [315.7, -0.09377],
+    # Got these from matlab originally ;/
+    'p0': [315.7, -0.09377],
 }
-plotAndFit(df2)
+r_squared2 = plotAndFit(df2)
