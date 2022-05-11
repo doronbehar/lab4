@@ -34,7 +34,6 @@ def plotAndFit(df):
         fmt=".",
         label="measurements"
     )
-    plt.title("Thalium-204")
 
     # Perform fit to I(t) to get I_0
     def isl_fit(r, m, a):
@@ -63,7 +62,6 @@ def plotAndFit(df):
     plt.xlabel('Relative Distance [cm]')
     plt.ylabel('Counts [Hz]')
     plt.legend()
-    plt.title(df.attrs['matter'])
     plt.savefig("{}.pgf".format(df.attrs['matter']))
     plt.savefig("{}.png".format(df.attrs['matter']))
     plt.show()
