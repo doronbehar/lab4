@@ -118,8 +118,13 @@ m = (yl - yu)/(xl - xu)
 R_m = 1.32227
 plt.vlines(R_m, 0, 1, linestyles='dashed', colors='black')
 plt.plot([R_m], [0.5], 'o')
-plt.xticks(ticks=[R_m], labels=['$R_m$'])
+plt.xticks(
+    ticks=[R_m, xu, xl],
+    labels=['$R_m = {:.2} cm$'.format(R_m), '${:.2} cm$'.format(xu), '${:.2} cm$'.format(xl)]
+)
+plt.xlabel("Distance")
 plt.yticks(ticks=[0,0.5,1])
+plt.ylabel("Relative Intensity")
 plt.legend()
 plt.savefig("Polonium-210-range.pgf")
 plt.savefig("Polonium-210-range.png")
