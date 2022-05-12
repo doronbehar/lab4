@@ -92,3 +92,35 @@ df2.attrs = {
     'p0': [315.7, -0.09377],
 }
 df2.attrs['fitResults'] = plotAndFit(df2)
+
+a = np.array([df2.attrs['fitResults']['a'], df1.attrs['fitResults']['a']]).mean()
+
+df3 = pd.read_csv("./Po-210_0.1uCi_8Nov2021_filtered.tsv", skiprows=10, index_col=False, sep="\t")
+x_data = df3['Distance'].values + 1 # Plus 1 for the shelves offset
+counts = np.divide(df3['Counts'].values, df3['Time'].values) - noise.m.n
+y_data = np.divide(counts, np.power(x_data + a.n,-2))
+y_data = y_data/max(y_data)
+plt.plot(x_data, y_data, '.', label="counts normalized")
+plt.hlines(0.5, x_data.min(), x_data.max(), linestyles="dashed", colors='red', label="Half Intensity")
+# xl = 1.1882, yl = 0.6020, xr = 1.3902, yr=0.3102
+x_data_f = np.delete(x_data, 1)
+y_data_f = np.delete(y_data, 1)
+yu = y_data_f[x_data_f.argmax()]
+xu = x_data_f.max()
+yl = y_data_f[x_data_f.argmin()]
+xl = x_data_f.min()
+plt.plot(
+    [xl, xu],
+    [yl, yu],
+'g', label="Linear Interpolation")
+m = (yl - yu)/(xl - xu)
+# The position where the linear graph hits the y = 0.5 line
+R_m = 1.32227
+plt.vlines(R_m, 0, 1, linestyles='dashed', colors='black')
+plt.plot([R_m], [0.5], 'o')
+plt.xticks(ticks=[R_m], labels=['$R_m$'])
+plt.yticks(ticks=[0,0.5,1])
+plt.legend()
+plt.savefig("Polonium-210-range.pgf")
+plt.savefig("Polonium-210-range.png")
+plt.show()
