@@ -67,6 +67,7 @@ def plotAndFit(df):
     ss_res = np.sum(residuals**2)
     ss_tot = np.sum((counts1-np.mean(counts1))**2)
     r_squared = 1 - (ss_res / ss_tot)
+    a = ufloat(popt[1], popt_err[1])
 
     plt.xlabel('Relative Distance [cm]')
     plt.ylabel('Counts [Hz]')
@@ -75,8 +76,7 @@ def plotAndFit(df):
     plt.savefig("{}.png".format(df.attrs['matter']))
     plt.show()
 
-    return r_squared
-
+    return {'R^2': r_squared, 'a': a}
 
 df1 = pd.read_csv("./Ti-204_0.25uCi_3.78Yrs_Dec2019.tsv", skiprows=10, index_col=False, sep="\t")
 df1.attrs = {
@@ -84,11 +84,11 @@ df1.attrs = {
     # Got these from matlab originally ;/
     'p0': [161.1, -0.0585]
 }
-r_squared1 = plotAndFit(df1)
+df1.attrs['fitResults'] = plotAndFit(df1)
 df2 = pd.read_csv("./Sr-90_0.1uCi_28.8Yrs_Nov2014.tsv", skiprows=10, index_col=False, sep="\t")
 df2.attrs = {
     'matter': "Strontium-90_Nov2014",
     # Got these from matlab originally ;/
     'p0': [315.7, -0.09377],
 }
-r_squared2 = plotAndFit(df2)
+df2.attrs['fitResults'] = plotAndFit(df2)
