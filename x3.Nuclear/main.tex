@@ -171,34 +171,62 @@ $\alpha$
 יוצאים מהמקור הרדיואקטיבי. קשר זה נמדד ב-
 \cite{RadiologicalHandbook}
 המוצגות בגרף
+\ref{graph:alpha-energies}.
+אנו סבורים,
+(לפי
+\cite{SE_alpha_energy})
+כי מדידות אלו נעשו באמצעות מערכת 
+\textenglish{Rutherford Backscattering Spectrometry (RBS)}
+ולמעשה נמדדה האנרגיה הקינטית של חלקיקי ה-
+$\alpha$
+באמצעות צומת
+\textenglish{p-n}
+של סיליקון היוצר זרם של אלקטרונים שעוברים לרמת הולכה במל"מ בגלל הפגיעה של חלקיקי ה-
+$\alpha$
+בהם.
 
 \begin{graph}
     \centering
-    \includegraphics[width=\textwidth]{./}
+    \includegraphics[width=\textwidth]{./ISL/radiological-alpha-energies.png}
+    \caption{
+    מדידת אנרגית חלקיקי
+    $\alpha$
+    כתלות במרחק
+    $R_m$,
+    בטמפרטורה של
+    $15 \deg C$
+    ולחץ אטמוספירי.
+    לקוח מתוך
+    \cite{RadiologicalHandbook}.
+    }
+    \label{graph:alpha-energies}
 \end{graph}
 
 \subsection{
 דעיכת קרינת בטא כתלות בחסימה
 }
 
-חלקיקי ה
+חלקיקי ה-
 $\beta$
 הם אלקטרונים שנפלטים מהאטום כאשר ניוטרון דועך והופך לניטרון אלקטרון וניוטרנו.
-גם עבור חלקיק ה
-$\beta$
-נרצה למדוד את הדעיכה בעת מעבר דרך חומר.
-בעזרת חוק
-\textenglish{Beer-Lambert}
-נוכל לקבל את היחס בין העוצמה לעובי החומר.
+חוק
+\textenglish{Beer-Lambert}\cite{Manual}
+נותן לנו את הקשר בין עוצמת הקרינה לעובי החומר המובא בנוסחא
+\ref{equ:beer-lambert}.
 
 \begin{equ}
 $$I = I_0 e^{-\mu t}$$
-\caption{עוצמת הקרינה כתלות בעובי החומר בה היא עוברת כאשר
+\caption{
+עוצמת הקרינה 
+$I$
+כתלות בעובי החומר
+$t$
+בה היא עוברת וכתלות ב-
 $\mu$
-מקדם הדעיכה}
+מקדם הדעיכה.
+}
+\label{equ:beer-lambert}
 \end{equ}
-
-\clearpage
 
 \section{
 מערכת הניסוי
@@ -208,38 +236,31 @@ $\mu$
 המערכת מורכבת ממונה גייגר, אפליקציה שבעזרתה ניתן למדוד את מספר הקריאות שהמונה קיבל בזמן נתון,
 וחוסמי קרינה מסוגים ועוביים שונים.
 
-% TODO: add ref to the guide
+
 \begin{figure}[ht!]
     \centering
     \includegraphics{systemSetup.png}
     \caption{
     מערכת הניסוי.
-    \cite{Manual}
+    לקוח מתוך התדריך
+    \cite{Manual}.
     }
     \label{fig:systemSetupNuclear}
 \end{figure}
 
-מונה גייגר בנוי משפופרת גלילית מוליכה בעלת חלון כניסה דק. השפופרת משמשת כקתודה ומכילה בתוכה אנודה העשויה מחוט מוליך הנמצא במתח גבוה ומבודד מהדפנות.
+מונה גייגר בנוי משפורפרת גלילית מוליכה בעלת חלון כניסה דק. השפורפרת משמשת כקתודה ומכילה בתוכה אנודה העשויה מחוט מוליך הנמצא במתח גבוה ומבודד מהדפנות.
 בתוך השפורפרת מצוי גז אציל, כך בעת כניסת קרינה לתא היא מיננת את הגז.
 המטען נאסף בתיל החיובי, וכאשר הוא זורם חזרה לדפנות, נרשמת במערכת פעימה שמעידה על אירוע. המכשיר מגביר את האות ומציג אותו למשתמש.
 
 לאחר היינון חלה רגיעה,
-האלקטרונים והאטומים מתלכדים מחדש בזמן המכונה זמן ההתלכדות. בטווח זמנים זה המכשיר אינו מסוגל להוציא אותות נוספים.
+האלקטרונים והאטומים מתלכדים מחדש בזמן המכונה זמן ההתלכדות. בטווח זמנים זה המכשיר אינו מסוגל להוציא אותות נוספים. וטווח זמנים זה נקרא
+\textenglish{"Dead Time"}.
+כתוצאה מכך, יש לבחור את מתח העבודה בין הקתודה לאנודה כך שתיספר כמות חלקיקים גבוהה אבל יחסית קבועה כתלות במתח. תחום זה של מתחים נקרא
+\textenglish{Plateau}
+וזה תחום מתחים המשתנה בין מערכות, כפי שמוסבר בתדריך
+\cite{Manual}.
 
-כיוצא מן הכתוב, כמות הפעימות תלויה במתח המסופק. בגרף
-\ref{fig:plateau}
-מוצג יחס זה.
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics{plateau.png}
-    \caption{כמות הפעימות כתלות במתח במונה גייגר, לקוח מהתדריך}
-    \label{fig:plateau}
-\end{figure}
-
-מתח העבודה הרצוי יהיה בתחום ה
-\textenglish{"plateau"},
-בו כמות הפעימות בקירוב איננה משתנה כתלות במתח.
+\clearpage
 
 \section{
 תוצאות
@@ -258,16 +279,19 @@ $plateau$.
     \begin{subfigure}[b]{0.49\textwidth}
     	\centering
     	\resizebox{\textwidth}{!}{\input{./plateau/plateau1.pgf}}
-    	\caption{ סריקת המתחים במונה גייגר עבור
-    	SR90}
+    	\caption{\textenglish{Strontium-90}}
     
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
     	\centering
     	\resizebox{\textwidth}{!}{\input{plateau/plateau2.pgf}}
-        \caption{סריקת המתחים במונה גייגר עבור TL-204}
+        \caption{\textenglish{Thallium-204}}
     \end{subfigure}
+    \caption{
+    סריקות מתחים במונה
+    \textenglish{Geiger}.
+    }
     \label{graph:plateau}
 \end{graph}
 
@@ -291,6 +315,7 @@ $1120[V]$,
     }
     \label{graph:backgroundNoise}
 \end{graph}
+
 עלינו היה לקבוע איזו התסברות מתארת בצורה מדוייקת יותר את הקרינת הרקע: נורמלית או פואסונית.
 לשם כך התאמנו את המידע לפני שתי ההתפלגויות וחישבנו את ערכו של 
 $R^2$
@@ -298,83 +323,101 @@ $R^2$
 עבור ההתפלגות הנורמלית התקבל:
 $R^2 = 0.6436$
 ועבור ההתפלגות הפואסונית התקבל:
-$R^2 = 0.6933$.
-למרות ההבדל הקטן בהתאמה קבענו שההיסטוגרמה שלנו מתפלגת פואסונית, כאשר
+$R^2 = 0.6933$,
+כאשר
 $\lambda = 2.7 \pm 0.5$.
-בהתאם לכך הערכנו את השגיאה של המדידות.
+למרות ששתי ההתאמות אינן מדוייקות קבענו שההיסטוגרמה שלנו מתפלגת פואסונית לפי בחינה של ערך ה 
+$R^2$
+ולפי בחינה ויזואלית. בגלל שבחרנו בהתפלגות פואסונית, הערכנו את השגיאה של כל ספירת חלקיקים בגלאי כשורש הספירה, בגלל שבהתפלגות פואסונית
+$\sigma = \sqrt{Var(X)} = \sqrt{E(X)}$.
+בנוסף, חישבנו גם את רעש הרקע הממוצע וקיבלנו שהוא
+$n = (0.27\pm0.03) [Hz]$.
+את גודל זה החסרנו מכל המדידות שלנו.
+
 \subsection{
 מדידת דעיכת בטא
 }
 
 כאמור מדדנו את דעיכת חלקיקי ה-ב
 $\beta$,
-כאשר העברנו אותו באלומיניום בעובי משתנה.
-
-התוצאות עבור החומר הרדיואקטיבי
-$SR-90$
-מוצגות בגרף 
+כאשר העברנו אותו באלומיניום בעובי משתנה. התוצאות עבור
+\textenglish{Strontium-90}
+ו-
+\textenglish{Thallium-204}
+מוצגות בגרפים 
 \ref{graph:decay_SR90},
-ועבור החומר
-$Tl-204$
-התוצאות מוצגות בגרף
-\ref{graph:decay_Tl-204}.
+ו-
+\ref{graph:decay_Tl-204}
+בהתאמה.
+% TODO^ Fix text מה זה ?
 
-
-\begin{graph}[ht!]
+\begin{graph}[H]
     \centering
-    \includegraphics[width=0.79\textwidth]{SR90.png}
+    \begin{subfigure}[b]{0.49\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{SR90.png}
+    	\caption{\textenglish{Strontium-90}}
+    	\label{graph:decay_SR90}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{Tl-204.png}
+        \caption{\textenglish{Thallium-204}}
+        \label{graph:decay_Tl-204}
+    \end{subfigure}
     \caption{
-    % TODO
+    מדידת חוק
+    \textenglish{Beer-Lambert}.
     }
-    \label{graph:decay_SR90}
+    \label{graph:beer-lambert}
 \end{graph}
- בגרף מוצגות הפעימות חלקי זמן כתלות בצפיפות עובי החומר-אלומיניום כפי שנמדדו.
- למדידות ביצענו התאמה ,
- טיב ההתאמה הינו 
- $R^2 = 0.9892$.
-% $\chi^2=$.
- %TODO: chi-squared
- מתוך המדידות חילצנו את מקדם הדעיכה
- $\mu = (3.629 \pm 0.504) [\frac{cm^2}{g}]$.
- על מנת למצוא את
-טווח החדירה הממוצע של קרני ה
+
+ בגרפים מוצגות הפעימות חלקי זמן כתלות בצפיפות עובי החומר-אלומיניום כפי שנמדדו. למדידות ביצענו התאמה לביטוי ב-
+\ref{equ:beer-lambert}.
+טיב ההתאמה שהתקבל ב-
+\ref{graph:decay_SR90}
+וב-
+\ref{graph:decay_Tl-204}
+היה
+$R^2 = 0.9892$
+ו-
+$R^2 = 0.9901$.
+בהתאמה.
+
+מתוך ההתאמה חילצנו את מקדמי הדעיכה
+$\mu_{SR-90} = (1.6 \pm 0.5) [\frac{cm^2}{gram}]$
+
+ו-
+$\mu_{Tl-204} = (3.6 \pm 0.5) [\frac{cm^2}{gram}]$
+בהתאמה. על מנת למצוא את טווח החדירה הממוצע של קרני ה-
 $\beta$
- נמצא מתי העוצמה דועכת לחצי מהעוצמה ההתחלתית ונקבל את צפיפות טווח החדירה ההממוצע.
-  %TODO: calculate that
-
-
-
-\begin{graph}[ht!]
-    \centering
-    \includegraphics[width=0.79\textwidth]{Tl-204.png}
-    \caption{
-    % TODO
-    }
-    \label{graph:decay_Tl-204}
-\end{graph}
-
- בדומה לגרף 
- \ref{graph:decay_SR90},
- מוצגות הפעימות חלקי זמן כתלות בצפיפות עובי החומר-אלומיניום.
- למדידות ביצענו התאמה ,
- טיב ההתאמה הינו 
- $R^2 = 0.9901$.
- %$\chi^2=$.
- %TODO: chi-squared
- מתוך המדידות חילצנו את מקדם הדעיכה
- $\mu = (3.38 \pm 0.49) [\frac{cm^2}{g}]$.
-חישבנו את צפיפות טווח החדירה ההממוצע.
- %TODO: calculate that
-
-\clearpage
+נמצא מתי העוצמה דועכת לחצי מהעוצמה ההתחלתית ונקבל את צפיפות טווח החדירה ההממוצע:
+$R_{SR-90} = (0.4 \pm 0.1) [\frac{gram}{cm^2}]$
+ו-
+$R_{Tl-204} = (0.19 \pm 0.02) [\frac{gram}{cm^2}]$.
+לבסוף חישבנו את האנרגיה המקסמלית וקיבלנו כי 
+$E_{Max}^{SR-90} = 1.1 \pm 0.4 [MeV]$,
+$E_{Max}^{Tl-204} = 0.5 \pm 0.2 [MeV]$.
+ערכו של 
+$E_{Max}^{Tl-204}$
+עומד במבחן רווח בר-סמך בהשוואה לערך התיאורטי ואילו ערכו של 
+$E_{Max}^{SR-90}$
+אינו עומד במבחן רווח בר סמך בהשוואה לערך התיאורטי ובעל שגיאה של 
+$60\%$
+מהערך התיאורטי.
+% TODO: add ref to calculations
+% TODO:add ref to theoretical values
+% $\chi^2=$.
+%TODO: chi-squared
 
 \subsection{
 מדידת דעיכת עוצמת קרינה כתלות במרחק
 }
 
 עבור
-\textenglish{Thalium-204}
-ועבור
+\textenglish{Thallium-204}
+u-
 \textenglish{Strontium-90}
 מדדנו את הקשר בין עוצמת הקרינה הרדיואקטיבית למרחק של המקור הרדיואקטיבי מהגלאי. ביצענו התאמה לביטוי דומה לביטוי במשוואה
 \ref{equ:distanceIntensity}:
@@ -397,47 +440,140 @@ $n$ -
 ביצענו התאמה לפונקציה זו כי לא הייתה באפשרותינו למדוד את המרחק בין המקור לגלאי באופן אבסולוטי, אלא רק באופן יחסי. השתמשנו גם בתוספת רעש קבוע 
 $n$
 שמקורה בקרינת רקע שמדדנו ב-
+\ref{graph:backgroundNoise}.
 התוצאות מוצגות בגרפים
 \ref{graph:ISL_Sr-90}
 ו-
 \ref{graph:ISL_Tl-204}.
-% TODO: reference something related to the noise^
 
 \begin{graph}[H]
-	\begin{center}
-	\resizebox{\textwidth}{!}{\input{./ISL/Strontium-90_Nov2014.pgf}}
-	\end{center}
-	\caption{
-	מדידות והתאמה ל-
-	\ref{equ:distanceIntensity_fit},
-	$R^2 \approx 0.996$
-	}
-	\label{graph:ISL_Sr-90}
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{./ISL/Strontium-90_Nov2014.pgf}}
+    	\caption{\textenglish{Strontium-90}}
+    	\label{graph:ISL_Sr-90}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+    	\centering
+    	\resizebox{\textwidth}{!}{\input{./ISL/Thallium-204_March2020.pgf}}
+        \caption{\textenglish{Thallium-204}}
+        \label{graph:ISL_Tl-204}
+    \end{subfigure}
+    \caption{
+    מדידת עוצמת הקרינה כתלות במרחק והתאמה לביטוי
+    \ref{equ:distanceIntensity_fit}.
+    }
+    \label{graph:distanceIntensity}
 \end{graph}
 
-\begin{graph}[H]
-	\begin{center}
-	\resizebox{\textwidth}{!}{\input{./ISL/Thallium-204_March2020.pgf}}
-	\end{center}
-	\caption{
-	מדידות והתאמה ל-
-	\ref{equ:distanceIntensity_fit},
-	$R^2 \approx 1.000$
-	}
-	\label{graph:ISL_Tl-204}
-\end{graph}
+קיבלנו התאמה של
+$R^2 \approx 0.996$
+ו-
+$R^2 \approx 1.000$
+לגרפים
+\ref{graph:ISL_Sr-90}
+ו-
+\ref{graph:ISL_Tl-204}
+בהתאמה.
 
 \subsection{
 מדידת טווח קרינת אלפא
 }
 
+בשביל למדוד את טווח קרינת ה-
+$\alpha$,
+ביצענו מדידות דומות למדידות בגרף
+\ref{graph:distanceIntensity}
+רק שהשתמשנו בטווח יותר קטן של מרחקים שכן חלקיקי
+$\alpha$
+דועכים הרבה יותר מהר באוויר לעומת חלקיקי
+$\beta$
+שמדדנו ב-
+\ref{graph:distanceIntensity}.
+בנוסף, ישנה דעיכה של
+$\sim \frac{1}{r^2}$
+של עוצמת הקרינה שאינה מתוארת בתיאוריה ב-
+\ref{fig:alphaDecay}.
+על כן, השתמשנו בממוצע של ההזחה
+$a$
+שמצאנו בהתאמות בגרפים
+\ref{graph:distanceIntensity}
+וחילקנו את כל מדידה בביטוי:
+
+$$ \frac{1}{(r+a)^2}$$
+
+כדי לקבל מדידות שלא מושפעות מדעיכת עוצמת הקרינה בגלל המרחק, אלא 
+\textbf{
+רק
+}
+מדעיכה הנובעת מהתנגשות חלקיקי ה-
+$\alpha$
+בחלקיקי האוויר, כפי שמתואר באיור
+\ref{fig:alphaDecay}.
+קיבלנו את התוצאות המוצגות בגרף
+\ref{graph:alpha-measurement},
+לאחר נרמול העוצמה.
+
+% TODO: Make sure this eventually appears in a reasonable location in the PDF
+\begin{graph}[H]
+    	\centering
+    	\resizebox{0.795\textwidth}{!}{\input{./ISL/Polonium-210-range.pgf}}
+    	\caption{
+    	מדידת דעיכת קרינת
+    	$\alpha$
+    	מ-
+    	\textenglish{Polonium-210}
+    	ומציאת המרחק הממוצע
+    	$R_m$.
+    	}
+    	\label{graph:alpha-measurement}
+\end{graph}
+
+אנו מעריכים את השגיאה של
+$R_m$
+שמצאנו בשיטה זו ב-
+$\pm0.5cm$
+שכן הקו הישר הירוק נע בציר האופקי בטווח של כ-
+$2\cdot 0.5 cm = 1 cm$.
+השתמשנו בגרף
+\ref{graph:alpha-energies}
+בכדי למדוד את האנרגיה הקינטית של חלקיקי ה-
+$\alpha$
+וקיבלנו שהיא
+$2.4 \pm 0.9 MeV$.
+
 \section{
 דיון בתוצאות
 }
 
+
+בבחינת קרינת הרקע הבחנו כי התפלגות הקרינה תואמת יותר להתפלגות פואסונית מאשר להתפלגות נורמלית. כך קבענו את השדגיאה שלנו במהלך הניסוי. אך נבחין כי ההתאמה הפואסונית איננה בדיוק גבוה, ייתכן שטווח המדידה שלנו לא היה ארוך מספיק והקירוב איננו מתקבל וייתכן שההתפלגות איננה פואסונית אלא בעלת שגיאה מסויימת.
+
+במדידת דעיכת חלקיקי ה
+$\beta$,
+הצלחנו לקבל תוצאות התואמות את התיאוריה הן איכותית והן כמותית עבור ה
+$Thallium-90$,
+ואילו עבור ה
+$Strontium-90$
+ערך התאורטי של האנרגיה אינו עומד במבחן רווח בר סמך.
+בנוסף ניתן לראות שבשתי התוצאות ערכי השגיאה גדולים למדי.
+ניתן להסביר תוצאות אלה בכך שלשני החומרים יש יותר מדרך דעיכה אחת וייתכן שהמדידות שלנו מודדות שילוב של מספר דעיכות.
+
+המטרה של מדידה
+\ref{graph:alpha-measurement}
+הייתה למצוא את האנרגיה הקינטית בה יוצאים חלקיקי האלפא מהמקור הרדיואקטיבי. הערך שקיבלנו-
+$2.4 \pm 0.9 MeV$
+עומד במבחן רווח בר-סמך עם הערך הצפוי לפי התדריך
+$5.5\pm2.5 MeV$
+אך השגיאה שלו גדולה למדי.
+% TODO: Write more.
+
 \section{
 מסקנות
 }
+% TODO: Write this
 
 \section*{
 סימוכין
