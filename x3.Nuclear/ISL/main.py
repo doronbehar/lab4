@@ -1,8 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pint
-ureg = pint.UnitRegistry()
-ureg.setup_matplotlib(True)
 from uncertainties import ufloat, umath
 from uncertainties.unumpy import uarray
 plt.rcParams['text.usetex'] = True
@@ -16,6 +14,8 @@ import pandas as pd
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
 from background import noise
+from background import ureg
+ureg.setup_matplotlib(True)
 
 def plotAndFit(df):
     counts1 = np.divide(
@@ -97,14 +97,25 @@ a = np.array([df2.attrs['fitResults']['a'], df1.attrs['fitResults']['a']]).mean(
 
 df3 = pd.read_csv("./Po-210_0.1uCi_8Nov2021_filtered.tsv", skiprows=10, index_col=False, sep="\t")
 x_data = df3['Distance'].values + 1 # Plus 1 for the shelves offset
-counts = np.divide(df3['Counts'].values, df3['Time'].values) - noise.m.n
-y_data = np.divide(counts, np.power(x_data + a.n,-2))
+counts = np.divide(
+        uarray(df3['Counts'].values, np.sqrt(df3['Counts'].values)),
+        df3['Time'].values*ureg.s
+) - noise
+y_data = np.divide(counts, np.power(x_data + a,-2))
 y_data = y_data/max(y_data)
-plt.plot(x_data, y_data, '.', label="counts normalized")
+y_data_raw = [val.m.n for val in y_data]
+y_data_err = [val.m.s for val in y_data]
+plt.errorbar(
+    x_data,
+    y_data_raw,
+    xerr=0.01,
+    yerr=y_data_err,
+    fmt='.',
+    label="counts normalized")
 plt.hlines(0.5, x_data.min(), x_data.max(), linestyles="dashed", colors='red', label="Half Intensity")
 # xl = 1.1882, yl = 0.6020, xr = 1.3902, yr=0.3102
 x_data_f = np.delete(x_data, 1)
-y_data_f = np.delete(y_data, 1)
+y_data_f = np.delete(y_data_raw, 1)
 yu = y_data_f[x_data_f.argmax()]
 xu = x_data_f.max()
 yl = y_data_f[x_data_f.argmin()]
