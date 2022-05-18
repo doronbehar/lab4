@@ -1,0 +1,37 @@
+nt_part0_fitresult = 
+       p1 =      0.0402  (0.03834, 0.04206)
+nt_part0_gof = 
+       rsquare: 0.9946
+nt_R_0 =
+   40.2034
+nt_sigma_0 =
+   3.9798e+04
+nt_part1_fitresult = 
+       p1 =      -1.437  (-1.453, -1.42)
+nt_part1_gof = 
+       rsquare: 0.9997
+nt_part1_R_h =
+   -0.0067
+nt_number_of_charges =
+  -9.2987e+20
+nt_part1_mu =
+ -267.1595
+nt_part2_fitresult = 
+       p1 =     -0.1758  (-0.1796, -0.1719)
+nt_part2_gof = 
+       rsquare: 0.9962
+nt_part2_R_h =
+   -0.0059
+nt_number_of_charges =
+  -1.0655e+21
+nt_part2_mu =
+ -233.1553
+nt_part4_fitresult = 
+       p1 =       -3416  (-3499, -3333)
+       p2 =       9.201  (8.991, 9.411)
+nt_part4_gof = 
+       rsquare: 0.9984
+nt_part4_energy_gap =
+   -0.5892
+nt_part5_energy_gap =
+   -0.5645
