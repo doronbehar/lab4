@@ -41,12 +41,34 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 % Note we use resizebox as explained here through out the document https://tex.stackexchange.com/a/582956/125609
-
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ top=30mm,
+ left = 25mm,
+ right = 25mm,
+ bottom=30mm,
+ headheight=2cm,
+ headsep=2cm,
+ footskip=1.5cm
+}
 % Language
 \usepackage{polyglossia}
 \setdefaultlanguage{hebrew}
 \setotherlanguage{english}
 \usepackage{hebrewcal}
+
+\usepackage[
+backend=biber,
+isbn=false,
+style=numeric,
+doi = false,
+sorting=ynt
+]{biblatex}
+% Seems to be a recommended package but it makes quotes in bibliography at the
+% end appear with a question mark instead of `"`.
+%\usepackage{csquotes}
+\addbibresource{references.bib} % Imports bibliography file
 
 % Fonts
 \setmainfont{David CLM}
@@ -59,7 +81,7 @@
 \title{
 שימוש באפקט
 \textenglish{Hall}
-למדידת פער אנרגטי בין רמות אנרגיה במוליך למחצה מסוג
+למדידת פער אנרגטי בין רמות אנרגיה וריכוז מוליכים במוליך למחצה מסוג
 \textenglish{n-Germanium}
 }
 \author{
@@ -73,23 +95,35 @@
 
 \begin{abstract}
 % TODO
+חמש
+
+או 
+
+שש
+
+שורות
+
+של 
+
+תקציר
 \end{abstract}
 \section{מבוא}
 \subsection{אפקט הול}
-אפקט הול הוא תופעה פיזיקלית בה נוצר מתח חשמלי בכיוון ניצב לכיוון זרימת זרם במוליך, כאשר מופעל על המוליך שדה מגנטי ניצב. 
-השדה המגנטי יוצר כוח על נושאי המטען שכיוונו ניצב לכיוון הזרימה ולשדה המגנטי, כך תיווצר הצטברות מטען שלילי בקצה אחד של המוליך ומטען חיובי בקצה המנוגד שיוצרו שדה חשמלי במוליך.
- לבסוף, המערכת תגיע לשיווי משקל כאשר הכוח שיוצר השדה החשמלי יבטל את הכח שיוצר השדה המגנטי.
+אפקט הול הוא תופעה פיזיקלית בה נוצר מתח חשמלי במוליך בכיוון הניצב לזרם העובר בו כתוצאה משדה מגנטי הניצב לשניהם. השדה המגנטי יוצר כוח על נושאי המטען שכיוונו ניצב לזרם ונוצרת הצטברות מטען שלילי בקצה אחד של המוליך ומטען חיובי בקצה המנוגד. כתוצאה מכך יווצר שדה חשמלי שיבטל את הכח שיוצר השדה המגנטי.
 במצב זה, המתח הנמדד בניצב לזרם- מתח הול- נתון בנוסחא
 \ref{equ:V_hall}.
+בנוסף נגדיר גודל שימוש המכונה מקדם הול המוצג בנוסחא
+\ref{equ:R_hall}.
+
 \begin{equ}
-$$V_H = \frac{IB}{ned}$$
+$$V_H = \frac{IB}{n e d}$$
 \caption{מתח הול כתלות בזרם 
 $I$,
- בשדה המגנטי
+השדה המגנטי
 $B$,
-בצפיפות נושאי המטען
+צפיפות נושאי המטען
 $n$,
-ובמרחק בין קצוות המוליך בכיוון של שדה הול
+ובמרחק בין קצוות המוליך בכיוון שדה הרוחבי
 $d$.}
 \label{equ:V_hall}
 \end{equ}
@@ -102,6 +136,7 @@ $$R_H = \frac{1}{ne}$$
 \end{equ}
 
 \subsection{מוליכים למחצה}
+
 מוליכים למחצה הם חומרים מהטור הרביעי של הטבלה  המאופיינים ב-4 אלקטרוני ערכיות. כאשר החומר מסודר כגביש טהור, כל אטום בשריג הגבישי הוא בעל 4 שכנים איתם הוא נמצא בקשר קוולנטי, כך שלמעשה בכל המערכת אין אלקטרונים חופשיים להולכה. גביש כזה נקרא מוליך למחצה אינטרינזי.
 על מנת להגדיל את ההולכה של המל"מ מבצעים אילוח
 על ידי הוספה של חומרים מהעמודה החמישית או השלישית.
@@ -110,40 +145,85 @@ $$R_H = \frac{1}{ne}$$
 
 במל"מ אינטרינזי בש.מ סה"כ ריכוז החורים קבוע וריכוז אלק' קבוע כי בממוצע על כל אלק' שעולה לפס
 ההולכה ויוצר חור, יש אחד שיורד לרמת הערכיות וממלא חור.
-כעת נקבל את אפקט הול עבור שני נושאי מטען ולכן נקבל נוסחא חדשה למקדם הול הנתונה בנוסחא
-\ref{equ:R_hall_2_carriers}.
+
+\clearpage
+אפקט הול במל"מ מאופיין ע"י שני נושאי מטען- חורים ואלקטרונים- לכן נצטרך להרחיב את נוסחאות 
+\ref{equ:R_hall}
+ו-
+\ref{equ:V_hall}
+לשני נושאי מטען.
+מקדם הול עבור שני נושאי מטען נתון בנוסחא 
+\ref{equ:R_hall_2_carriers}
+והקשר בין המתח הישר , השדה המגנטי והזרם עבור שני נושאי מטען נתון בנוסחא
+\ref{equ:V_2_carriers}.
+
+
 \begin{equ}
 $$R_H = \frac{\mu_h^2 p-\mu_e^2 n}{e(\mu_h p-\mu_e n)^2}$$
-\caption{מקדם הול עבור שני נושאי מטען כאשר 
-$\mu_e$
-- מוביליות האלקטרונים
-$\mu_h$
-- מוביליות החורים.}
+\caption{
+מקדם הול עבור שני נושאי מטען כאשר 
+$\mu_{e/h}$, ${n/p}$ -
+מוביליות וצפיפות האלקטרונים/חורים בהתאמה.
+}
 \label{equ:R_hall_2_carriers}
 \end{equ}
 
-% TODO: Explain this formula
+
 \begin{equ}
-$$V = (\frac{1}{e(\mu_h p-\mu_e n)}+
+$$U_p = (\frac{1}{e(\mu_h p-\mu_e n)}+
 B^2\frac{\mu_h p \mu_e n(\mu_h +\mu_e)^2}{e(\mu_h p-\mu_e n)^3})
-\frac{Il}{A}$$
-\caption{מקדם הול עבור שני נושאי מטען כאשר 
-$\mu_e$
-- מוביליות האלקטרונים
-$\mu_h$
-- מוביליות החורים.}
-\label{equ:R_hall_2_carriers}
+\frac{I \cdot l}{A}$$
+\caption{
+המתח האורכי
+$U_p$
+עבור שני נושאי מטען כאשר 
+$\mu_{e/h}$, ${n/p}$ -
+מוביליות וצפיפות האלקטרונים/חורים בהתאמה ו-
+$B$
+השדה המגנטי.
+}
+\label{equ:V_2_carriers}
 \end{equ}
 
-\begin{figure}[ht!]
+גורם נוסף שיכול להשפיע על ההולכה של חומר היא הטמפרטורה, סכימה תאורטית שמציגה את ההשפעה מוצגת בגרף
+\ref{fig:conductivity_temp_theory}.
+
+% TODO: add ref to guide
+\begin{graph}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{hall}
-    \caption{Caption}
-    \label{fig:part_0}
-\end{figure}
+    \includegraphics[width=0.8\textwidth]{Hall_temp.png}
+    \caption{
+    מוליכות, מוביליות וצפיפות נושאי המטען כתלות בטמפרטורה,
+    לקוח מהתדריך
+    \cite{Manual}.
+    }
+    \label{fig:conductivity_temp_theory}
+\end{graph}
 
-\subsection{מערכת הניסוי}
+בטמפ' מאוד נמוכות,
+נושאי המטען של החומר המסמם עוד מחוברים לאטומי
+האילוח ואינם חופשיים לנוע בשריג בפס
+ההולכה. עם העליה בטמפ' אטומי האילוח
+יעברו יינון והאלקטרונים שלהם יעברו
+לפס ההולכה. 
+בתחום האקסטרינזי כל נושאי המטען של החומר המסמם יהיו מיוננים וכמות נושאי המטען בקירוב נשארת קבועה.
+לבסוף, בטמפרטורות הגבוהות מסופקת למערכת מספיק אנרגיה להתגבר על הפער האנגטי של המלמ והחומר המסמם נהיה זניח.
+בתחום זה המל"מ נהיה אינטרינזי והקשר בין כמות נושאי המטען לטמפרטורה נתון בנוסחא 
+\ref{fig:conductivity_temp_theory}.
 
+\begin{equ}
+$$n = n_0 e^{-\frac{E_g}{2K_bT}}$$
+\caption{כמות נושאי המטען כתלות בטמפרטורה עבור מל"מ אינטרינזי.}
+\label{equ:n_temp_intrinsic}
+\end{equ}
+
+בניסוי זה נעבוד עם מערכת של 
+\textenglish{PHYWE}-
+\textenglish{Halleffect-Modul},
+עם המל"מ
+\textenglish{germanium}
+מסוג 
+\textenglish{n-type}.
 
 \section{תוצאות}
 בחלקו הראשון של הניסוי מדדנו את המתח הישר
@@ -153,12 +233,12 @@ $I$.
 התוצאות מוצגות בגרף
 \ref{fig:part_0}.
 
-\begin{figure}[ht!]
+\begin{graph}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{part0 - R_0.png}
-    \caption{Caption}
+    \caption{המתח הישר כתלות בזרם.}
     \label{fig:part_0}
-\end{figure}
+\end{graph}
 
 
 לאחר מכן הפעלנו שדה מנגטי בניצב לכיוון הזרם בגודל של 
@@ -166,12 +246,12 @@ $B = (250 \pm 1) mT$
 לשם קבלת אפקט הול. תוצאות מדידת מתח הול כתלות בזרם מוצגות בגרף
 \ref{fig:part_1}.
 
-\begin{figure}[ht!]
+\begin{graph}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{part1 - R_h.png}
-    \caption{Caption}
+    \caption{מתח הול כתלות בזרם}
     \label{fig:part_1}
-\end{figure}
+\end{graph}
 לאחר מכן קבענו זרם קבוע של
 $I = (30 \pm 1) mA$,
 ושנינו את השדה המגנטי.
@@ -182,40 +262,40 @@ $I = (30 \pm 1) mA$,
 \ref{fig:part_3}.
 מוצגות מדידות של המתח הישר כתלות בשדה המגנטי.
 
-\begin{figure}[ht!]
+\begin{graph}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{part2 - R_h.png}
-    \caption{Caption}
+    \caption{מתח הול כתלות בשדה המגנטי}
     \label{fig:part_2}
-\end{figure}
+\end{graph}
 
-\begin{figure}[ht!]
+\begin{graph}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{part3 - B-squared relation}
-    \caption{Caption}
+    \caption{המתח הישר כתלות בשדה המגנטי}
     \label{fig:part_3}
-\end{figure}
+\end{graph}
     
-לבסוף מדדנו את הקשר בין מתח הול והמתח הישר לטמפרטורה,
+לבסוף מדדנו את הקשר בין המוליכות לטמפרטורה בעזרת שני מדידות :מדידת המתח הישר ומתח הול.
 התוצאות מוצגות בגרפים
 \ref{fig:part_4}
 ו-
 \ref{fig:part_5}
 בהתאמה.
 
-\begin{figure}[ht!]
+\begin{graph}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{part4 - E_g.png}
-    \caption{Caption}
-    \label{fig:part_2}
-\end{figure}
+    \caption{מוליכות כתלות בטמפרטורה במדידת מתח ישר}
+    \label{fig:part_4}
+\end{graph}
 
-\begin{figure}[ht!]
+\begin{graph}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{part5 - E_g with magnetic field.png}
-    \caption{Caption}
-    \label{fig:part_3}
-\end{figure}
+    \caption{מוליכות כתלות בטמפרטורה במדידת מתח הול}
+    \label{fig:part_5}
+\end{graph}
 
 
 
