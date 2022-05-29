@@ -234,7 +234,7 @@ nt_part3_B = nt_part3_B_vs_U_p(:, 1);
 % Generated code
 ft = fittype( 'poly2' );
 [xData, yData] = prepareCurveData( nt_part3_B, nt_part3_U_p );
-[nt_part3_fitresult, nt_part3_gof] = fit( xData, yData, ft );
+[nt_part3_fitresult, nt_part3_gof] = fit( xData, yData, ft )
 
 part3_fig = figure;
 hold on;
@@ -418,7 +418,7 @@ ft = fittype( 'poly1' );
 excludedPoints = excludedata( xData, yData, 'Indices', [16 17 18 19 20 21 22 23 24 25 26 27 28 29] );
 nt_part5_opts = fitoptions( 'Method', 'LinearLeastSquares' );
 nt_part5_opts.Exclude = excludedPoints;
-[nt_part5_fitresult, nt_part5_gof] = fit( xData, yData, ft, nt_part5_opts );
+[nt_part5_fitresult, nt_part5_gof] = fit( xData, yData, ft, nt_part5_opts )
 
 nt_part5_energy_gap = nt_part5_fitresult.p1 * 2 * 8.625*10^-5
 
