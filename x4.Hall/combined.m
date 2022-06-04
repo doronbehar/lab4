@@ -1,6 +1,6 @@
-thickness_d = 1*10^-9
-length_l = 20*10^(-9)
-width_w = 10*10^(-9)
+thickness_d = 1*10^-3
+length_l = 20*10^(-3)
+width_w = 10*10^(-3)
 
 %%% {{{ PART 0 - measurement of R_0
 nt_part0_I = (linspace(-30,30,13))';
