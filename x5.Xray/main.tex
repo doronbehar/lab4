@@ -157,8 +157,7 @@ $124 keV$.
 
 \begin{graph}
     \centering
-    % TODO: Add graph of histograms of some metals, with x axis as a channel number
-    %\includegraphics{}
+    \includegraphics[width=\textwidth]{spec.png}
     \caption{
     היסטוגרמות של בליעת קרינת
     \textenglish{X-ray}
@@ -173,8 +172,7 @@ $124 keV$.
 
 \begin{graph}[ht!]
     \centering
-    % TODO: Add graph of linear relation between channel number and energies.
-    %\includegraphics{}
+    \includegraphics[width=\textwidth]{calibration.png}
     \caption{
     הקשר הלינארי בין האנרגיות למספר הערוץ ב-
     \textenglish{MCA}.
@@ -182,9 +180,12 @@ $124 keV$.
     \label{graph:MCA-energies}
 \end{graph}
 
-% TODO: SARAH fill in an R^2 value
 ביצענו התאמה לינארית וקיבלנו
-$R^2 = $.
+$R^2 = 0.9997$.
+    % fitresult(x) = p1*x + p2
+    % Coefficients (with 95% confidence bounds):
+    %   p1 =       7.146  (6.918, 7.375)
+    %   p2 =        1608  (1329, 1888)
 
 השתמשנו בקשר הלינארי המופיע ב-
 \ref{graph:MCA-energies}
@@ -192,7 +193,23 @@ $R^2 = $.
 % TODO: Make the list here more accurate, add the chemical elements composing them.
 \begin{enumerate}
     \item Hamatit
+    \begin{graph}[ht!]
+    \centering
+    \includegraphics[width=\textwidth]{Hamamit.png}
+    \caption{
+    \textenglish{Hamatit}
+    }
+    \label{graph:Hamatit-spec}
+    \end{graph}
     \item Descloizit
+    \begin{graph}[ht!]
+    \centering
+    \includegraphics[width=\textwidth]{Descloizit.png}
+    \caption{
+    \textenglish{Descloizit}
+    }
+    \label{graph:Descloizit-spec}
+    \end{graph}
 \end{enumerate}
 
 % TODO: Write another paragraph about the fitting done for the materials above
