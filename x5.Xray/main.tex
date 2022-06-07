@@ -115,30 +115,87 @@ $124 keV$.
 
 השתמשנו בערכת ניסוי של חברת
 \textenglish{PHYWE}\begin{english}\footnote{\url{https://www.phywe.com/physics/modern-physics/x-ray-physics/}}\end{english}
-ובחרנו בקתודה היורה אלקטרונים העשויה מ-
+ובחרנו בשפורפרת היורה אלקטרונים העשויה מ-
 \textenglish{molybdenum}. שימוש באלקטרונים ליינון מתכות יכול לגרום למצב בו אטומי המתכת מיוננים (ולכן עם מטען חיובי), והאלקטרונים הנוספים המגיעים מהמקור משנים את כיוון המהירות שלהם ומאבדים אנרגיה קינטית. איבוד אנרגיה זה מתבטא גם כן בפוטונים הנפלטים ונקלטים בגלאי. קרינה זו נקראת
 \textenglish{bremsstrahlung},
 היא בתחום ה-
 \textenglish{X-ray}
 גם כן,
-והיא אופיינית לקתודה בה בחרנו
+והיא אופיינית לשפורפרת בה בחרנו
 (\textenglish{molybdenum}).
-הטווח של קרינה זו רציף בניגוד לספקטרום הפליטה של המתכות אותו מדדנו. על כן היא אינהה חלק מתוצאות הניסוי המוצגות בתוצאות.
+הטווח של קרינה זו רציף בניגוד לספקטרום הפליטה של המתכות אותו מדדנו. על כן היא איננה חלק מתוצאות הניסוי המוצגות בתוצאות.
 
 באיור
 \ref{fig:experiment_scheme}
-הלקוח מתוך האתר של היצרן ניתן לראות את המערכת.
+הלקוח מתוך אתר היצרן, ניתן לראות צילום של המערכת. 
+הגלאי המופיע בתמונה התחבר לרכיב הנקרא
+\textenglish{MCA - Multi-Channel-Analyzer},
+גם כן מוצר של
+\textenglish{PHYWE}
+שבנה היסטוגרמה של כמות הקרינה כתלות במספר הערוץ של הגלאי, לכל אורך הזמן בו פעלה שפורפרת. כל ערוץ בו מקבל פוטונים באנרגיה מסוימת ולכן הציר המייצג את מספר הערוץ לינארי לציר האנרגיה.
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{./system.png}
     \caption{
-    איור של מערכת הניסוי, עם הדגשה של המרכיבים העיקריים - שפורפרת האלקטרונים, הדגימה והגלאי
+    איור של מערכת הניסוי, בטקסט על רקע אדום - גלאי הקרינה, הדגימה והשפורפרת.
     }
     \label{fig:experiment_scheme}
 \end{figure}
 
+השתמשנו במדידות של המופיעות ב-
+\cite{xrayBooklet}
+כדי לכייל את מספרי הערוצים לציר האנרגיה. הסתכלנו על הערוצים בהם מתקבלים נקודות מקסימום בהיסטוגרמה והתאמנו אותן לאנרגיות בהן המתכות שבדקנו פולטות/בולעות, בהתחשב בעוצמות היחסיות המופיעות בטבלאות גם כן. המתכות בהן השתמשנו וההיסטוגרמות מופיעות בגרף
+% TODO: Add ref to graph
+
+בנוסף זיהינו שמטבע של חצי ש"ח ישראלי עשוי מנחושת באמצעות השוואה של ההיסטוגרמה של הנחושת שמצאנו והשוואתה להיסטוגרמה של המטבע.
+
+השתמשנו בכיול לעיל כדי לזהות את ההרכב הכימי של כמה מוצקים ובדקנו האם ישנה התאמה בין המרכיבים הכימיים של הגבישים לעיל לחומרים שההיסטוגרמה שלהם מתאימה לאנרגיות המופיעות ב-
+\cite{xrayBooklet}.
+
 \section{תוצאות}
+
+\begin{graph}
+    \centering
+    % TODO: Add graph of histograms of some metals, with x axis as a channel number
+    %\includegraphics{}
+    \caption{
+    היסטוגרמות של בליעת קרינת
+    \textenglish{X-ray}
+    בגלאי למתכות שונות.
+    }
+    \label{graph:histograms}
+\end{graph}
+
+בגרף
+\ref{graph:histograms}
+ניתן לראות את ההיסטוגרמות של המתכות השונות שדגמנו, כאשר הציר האופקי אינו מכוייל לציר אנרגיה. זיהינו את המקומות בהם הופיעו המקסימות בכל מתכת ויצרנו את גרף הכיול שלהלן:
+
+\begin{graph}[ht!]
+    \centering
+    % TODO: Add graph of linear relation between channel number and energies.
+    %\includegraphics{}
+    \caption{
+    הקשר הלינארי בין האנרגיות למספר הערוץ ב-
+    \textenglish{MCA}.
+    }
+    \label{graph:MCA-energies}
+\end{graph}
+
+% TODO: SARAH fill in an R^2 value
+ביצענו התאמה לינארית וקיבלנו
+$R^2 = $.
+
+השתמשנו בקשר הלינארי המופיע ב-
+\ref{graph:MCA-energies}
+כדי לזהות את ההרכבים של הגבישים שלהלן:
+% TODO: Make the list here more accurate, add the chemical elements composing them.
+\begin{enumerate}
+    \item Hamatit
+    \item Descloizit
+\end{enumerate}
+
+% TODO: Write another paragraph about the fitting done for the materials above
 
 \section{דיון בתוצאות}
 
