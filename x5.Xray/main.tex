@@ -18,6 +18,7 @@
 
 \DeclareCaptionType{graph}[][]
 \captionsetup[graph]{name=גרף }
+\usepackage{mhchem}
 
 % to includegraphics
 \usepackage{graphicx}
@@ -192,22 +193,31 @@ $R^2 = 0.9997$.
 השתמשנו בקשר הלינארי המופיע ב-
 \ref{graph:MCA-energies}
 כדי לזהות את ההרכבים של הגבישים שלהלן:
+
 % TODO: Make the list here more accurate, add the chemical elements composing them.
-\subsection{Hamatit}
-\begin{graph}[H]
+
+\begin{english}
+\subsection{Hematite - \ce{Fe_2O_3}}
+\end{english}
+
+\begin{graph}[ht]
 \centering
 \includegraphics[width=\textwidth]{Hamamit.png}
-\caption{מדידת ספקטרום האנרגיה עבור 
-\textenglish{Hamatit}.
+\caption{
+מדידת ספקטרום האנרגיה עבור 
+\textenglish{Hamatite}.
 }
 \label{graph:Hamatit-spec}
 \end{graph}
-התקבל פיק יחיד בערך
-$E_{Hamatit} = 6453 \pm 50 [eV]$
+
+התקבל פיק יחיד ב-
+$E_{Hamatit} = 6.4 \pm 0.050 [KeV]$
+שמתאים לאנרגית המעבר של ברזל
+\ce{Fe}
 
 \begin{english}
-\subsection{Descloizit - }
-\ce{PbZnOHVO_4}
+% Parenthesis are reversed, I know
+\subsection{Descloizite - \ce{PbZn)OH(VO_4}}
 \end{english}
 
 \begin{graph}[H]
@@ -215,16 +225,26 @@ $E_{Hamatit} = 6453 \pm 50 [eV]$
     \includegraphics[width=\textwidth]{Descloizit.png}
     \caption{
     מדידת ספקטרום האנרגיה עבור 
-    \textenglish{Descloizit}
+    \textenglish{Descloizite}
     }
     \label{graph:Descloizit-spec}
 \end{graph}
+
+סה"כ בגרף התקבלו שישה פיקים, כאשר שלוש הפיקים הבאים שייכ
 התקבלו שלושה פיקים באנרגיות הבאות:
+
 \begin{enumerate}
-    \item $E_{Descloizit}^1 = 8.6 \pm 0.1 [KeV]$
-    \item $E_{Descloizit}^2 = 10.52 \pm 0.06 [KeV]$
-    \item $E_{Descloizit}^3 = 12.6 \pm 0.1 [KeV]$
+    \item $E_{Descloizite}^1 = 8.6 \pm 0.1 [KeV]$
+    \item $E_{Descloizite}^2 = 10.52 \pm 0.06 [KeV]$
+    \item $E_{Descloizite}^3 = 12.6 \pm 0.1 [KeV]$
 \end{enumerate}
+
+אנרגיות אלו מתאימות לאנרגיות המעבר של
+\ce{Zn}
+ו-
+\ce{Pb}
+שלקחנו מהטבלאות ב-
+\cite{xrayBooklet}.
 
 %השגיאות הוערכו ידנית לפי טווח הפיק.
 % TODO: Write another paragraph about the fitting done for the materials above
