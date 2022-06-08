@@ -155,7 +155,7 @@ $124 keV$.
 
 \section{תוצאות}
 
-\begin{graph}
+\begin{graph}[H]
     \centering
     \includegraphics[width=\textwidth]{spec.png}
     \caption{
@@ -170,7 +170,7 @@ $124 keV$.
 \ref{graph:histograms}
 ניתן לראות את ההיסטוגרמות של המתכות השונות שדגמנו, כאשר הציר האופקי אינו מכוייל לציר אנרגיה. זיהינו את המקומות בהם הופיעו המקסימות בכל מתכת ויצרנו את גרף הכיול שלהלן:
 
-\begin{graph}[ht!]
+\begin{graph}[H]
     \centering
     \includegraphics[width=\textwidth]{calibration.png}
     \caption{
@@ -180,12 +180,12 @@ $124 keV$.
     \label{graph:MCA-energies}
 \end{graph}
 
-ביצענו התאמה לינארית וקיבלנו
+ביצענו התאמה לינארית וקיבלנו ששיפוע הגרף הינו 
+$m = 7.1 \pm 0.2 [\frac{eV}{channel}]$
+והאיבר החופשי 
+$n = 1608 \pm 279 [eV]$,
+טיב ההתאמה היה 
 $R^2 = 0.9997$.
-    % fitresult(x) = p1*x + p2
-    % Coefficients (with 95% confidence bounds):
-    %   p1 =       7.146  (6.918, 7.375)
-    %   p2 =        1608  (1329, 1888)
 
 השתמשנו בקשר הלינארי המופיע ב-
 \ref{graph:MCA-energies}
@@ -193,25 +193,33 @@ $R^2 = 0.9997$.
 % TODO: Make the list here more accurate, add the chemical elements composing them.
 \begin{enumerate}
     \item Hamatit
-    \begin{graph}[ht!]
+    \begin{graph}[H]
     \centering
     \includegraphics[width=\textwidth]{Hamamit.png}
-    \caption{
-    \textenglish{Hamatit}
+    \caption{מדידת ספקטרום האנרגיה עבור 
+    \textenglish{Hamatit}.
     }
     \label{graph:Hamatit-spec}
     \end{graph}
+    התקבל פיק יחיד בערך
+    $E_{Hamatit} = 6453 \pm 50 [eV]$
     \item Descloizit
-    \begin{graph}[ht!]
+    \begin{graph}[H]
     \centering
     \includegraphics[width=\textwidth]{Descloizit.png}
-    \caption{
+    \caption{מדידת ספקטרום האנרגיה עבור 
     \textenglish{Descloizit}
     }
     \label{graph:Descloizit-spec}
     \end{graph}
+    התקבלו שלושה פיקים באנרגיות הבאות:
+    \begin{enumerate}
+    \item $E_{Descloizit}^1 = 8625 \pm 110 [eV]$
+    \item $E_{Descloizit}^2 = 10748 \pm 231 [eV]$
+    \item $E_{Descloizit}^3 = 12556 \pm 158 [eV]$
+    \end{enumerate}
 \end{enumerate}
-
+%השגיאות הוערכו ידנית לפי טווח הפיק.
 % TODO: Write another paragraph about the fitting done for the materials above
 
 \section{דיון בתוצאות}
