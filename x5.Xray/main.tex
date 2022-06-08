@@ -136,7 +136,7 @@ $124 keV$.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{./system.png}
+    \includegraphics[width=0.8\textwidth]{./system.png}
     \caption{
     איור של מערכת הניסוי, בטקסט על רקע אדום - גלאי הקרינה, הדגימה והשפורפרת.
     }
@@ -155,9 +155,15 @@ $124 keV$.
 
 \section{תוצאות}
 
+בגרף
+\ref{graph:histograms}
+ניתן לראות את ההיסטוגרמות של המתכות השונות שדגמנו, כאשר הציר האופקי אינו מכוייל לציר אנרגיה. זיהינו את המקומות בהם הופיעו המקסימות בכל מתכת ויצרנו את גרף הכיול
+\ref{graph:MCA-energies}.
+
 \begin{graph}[H]
     \centering
-    \includegraphics[width=\textwidth]{specNormlized.png}
+    % TODO: Check that it fits the page
+    \includegraphics[width=0.9\textwidth]{spec.png}
     \caption{
     היסטוגרמות של בליעת קרינת
     \textenglish{X-ray}
@@ -166,13 +172,9 @@ $124 keV$.
     \label{graph:histograms}
 \end{graph}
 
-בגרף
-\ref{graph:histograms}
-ניתן לראות את ההיסטוגרמות של המתכות השונות שדגמנו, כאשר הציר האופקי אינו מכוייל לציר אנרגיה. זיהינו את המקומות בהם הופיעו המקסימות בכל מתכת ויצרנו את גרף הכיול שלהלן:
-
 \begin{graph}[H]
     \centering
-    \includegraphics[width=\textwidth]{calibration.png}
+    \includegraphics[width=0.9\textwidth]{calibration.png}
     \caption{
     הקשר הלינארי בין האנרגיות למספר הערוץ ב-
     \textenglish{MCA}.
@@ -191,34 +193,39 @@ $R^2 = 0.9997$.
 \ref{graph:MCA-energies}
 כדי לזהות את ההרכבים של הגבישים שלהלן:
 % TODO: Make the list here more accurate, add the chemical elements composing them.
-\begin{enumerate}
-    \item Hamatit
-    \begin{graph}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Hamamit.png}
-    \caption{מדידת ספקטרום האנרגיה עבור 
-    \textenglish{Hamatit}.
-    }
-    \label{graph:Hamatit-spec}
-    \end{graph}
-    התקבל פיק יחיד בערך
-    $E_{Hamatit} = 6453 \pm 50 [eV]$
-    \item Descloizit
-    \begin{graph}[H]
+\subsection{Hamatit}
+\begin{graph}[H]
+\centering
+\includegraphics[width=\textwidth]{Hamamit.png}
+\caption{מדידת ספקטרום האנרגיה עבור 
+\textenglish{Hamatit}.
+}
+\label{graph:Hamatit-spec}
+\end{graph}
+התקבל פיק יחיד בערך
+$E_{Hamatit} = 6453 \pm 50 [eV]$
+
+\begin{english}
+\subsection{Descloizit - }
+\ce{PbZnOHVO_4}
+\end{english}
+
+\begin{graph}[H]
     \centering
     \includegraphics[width=\textwidth]{Descloizit.png}
-    \caption{מדידת ספקטרום האנרגיה עבור 
+    \caption{
+    מדידת ספקטרום האנרגיה עבור 
     \textenglish{Descloizit}
     }
     \label{graph:Descloizit-spec}
-    \end{graph}
-    התקבלו שלושה פיקים באנרגיות הבאות:
-    \begin{enumerate}
-    \item $E_{Descloizit}^1 = 8625 \pm 110 [eV]$
-    \item $E_{Descloizit}^2 = 10748 \pm 231 [eV]$
-    \item $E_{Descloizit}^3 = 12556 \pm 158 [eV]$
-    \end{enumerate}
+\end{graph}
+התקבלו שלושה פיקים באנרגיות הבאות:
+\begin{enumerate}
+    \item $E_{Descloizit}^1 = 8.6 \pm 0.1 [KeV]$
+    \item $E_{Descloizit}^2 = 10.52 \pm 0.06 [KeV]$
+    \item $E_{Descloizit}^3 = 12.6 \pm 0.1 [KeV]$
 \end{enumerate}
+
 %השגיאות הוערכו ידנית לפי טווח הפיק.
 % TODO: Write another paragraph about the fitting done for the materials above
 
